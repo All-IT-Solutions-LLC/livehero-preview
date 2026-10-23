@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ways to Give | LiveHero</title>
+<meta name="description" content="Support veterans through LiveHero. Give once, give monthly, honor a hero, or match your gift through your employer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1a2f; --navy-2:#13294a; --ink:#171c26; --muted:#5e6673; --line:#e4e1da;
+    --bg:#f6f3ec; --card:#ffffff; --red:#b3121c; --red-dark:#8f0d15; --gold:#d4a017; --cream:#f6f3ec;
+    --display:"Barlow Condensed",Inter,sans-serif;
+    --sky-1:#07162e; --sky-2:#1b3d78; --sky-3:#5aa3e8;
+    --radius:14px; --shadow:0 10px 30px rgba(11,31,58,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  h1,h2,h3,.bigtrack span,.panel h2,.tile b,.hero .trust b,.amounts button{font-family:var(--display)}
+  h1,h2{text-transform:uppercase;letter-spacing:.5px!important}
+  .btn{font-family:var(--display);text-transform:uppercase;letter-spacing:1.2px;font-size:16px!important}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;text-decoration:none;font-size:15px;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(215,38,44,.35)}
+  .btn-red:hover{background:var(--red-dark)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(4px)}
+  .btn-ghost:hover{background:rgba(255,255,255,.2)}
+  .btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,31,58,.92);backdrop-filter:blur(10px);color:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:21px;text-decoration:none}
+  .logo .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(160deg,var(--red),var(--red-dark));display:grid;place-items:center;box-shadow:0 4px 12px rgba(179,18,28,.4)}
+  .logo span b{color:var(--gold)}
+  .nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:14px}
+  .nav ul a{text-decoration:none;opacity:.9}
+  .nav ul a:hover{opacity:1;color:var(--gold)}
+  .nav .btn{padding:10px 20px;font-size:14px}
+  @media (max-width:860px){.nav ul{display:none}}
+
+  /* ---------- hero with WTC skyline ---------- */
+  .hero{position:relative;color:#fff;overflow:hidden;min-height:620px;display:flex;align-items:center;
+    background:radial-gradient(900px 420px at 78% -5%,rgba(179,18,28,.55) 0%,transparent 60%),radial-gradient(1200px 500px at 30% 0%,#1d3f78 0%,transparent 60%),
+               linear-gradient(180deg,#06111f 0%,#13294a 55%,#2b5fa6 100%)}
+  .hero svg.sky{position:absolute;inset:auto 0 0 0;width:100%;height:auto;display:block;pointer-events:none}
+  .hero .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 65% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1.5px 1.5px at 80% 40%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 40% 10%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 90% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 10% 55%,rgba(255,255,255,.4),transparent);opacity:.8}
+  .hero .wrap{position:relative;z-index:2;padding:80px 0 230px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:3px;font-family:var(--display);text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--gold)}
+  .hero h1{font-size:clamp(52px,8vw,112px);line-height:.92;font-weight:900;max-width:820px}
+  .hero h1 .brand{display:block;color:#fff}
+  .hero h1 .brand b{color:var(--gold)}
+  .hero p.lede{margin:22px 0 32px;max-width:580px;font-size:18px;color:rgba(255,255,255,.86)}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .trust{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.75)}
+  .hero .trust b{display:block;font-size:30px;color:#fff;font-weight:800;line-height:1}
+  .hero .caption{position:absolute;right:18px;bottom:12px;z-index:3;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+  /* ---------- donation panel (Red Cross pattern) ---------- */
+  .donate-band{margin-top:-120px;position:relative;z-index:5}
+  .donate-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+  @media (max-width:900px){.donate-grid{grid-template-columns:1fr}}
+  .panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px;border:1px solid var(--line)}
+  .panel h2{font-size:32px;font-weight:800;margin-bottom:6px}
+  .panel .sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .seg{display:grid;grid-template-columns:1fr 1fr;background:#eef2f7;border-radius:999px;padding:4px;margin-bottom:22px}
+  .seg button{border:0;background:transparent;padding:12px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;color:var(--muted);transition:.15s}
+  .seg button.on{background:var(--navy);color:#fff;box-shadow:0 4px 12px rgba(11,31,58,.25)}
+  .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+  .amounts button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:16px 10px;font-size:20px;font-weight:800;cursor:pointer;color:var(--navy);transition:.15s}
+  .amounts button small{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.6px}
+  .amounts button:hover{border-color:var(--navy)}
+  .amounts button.on{border-color:var(--red);background:#fff4f4;color:var(--red-dark)}
+  .other{display:flex;align-items:center;border:2px solid var(--line);border-radius:12px;padding:0 14px;height:58px;margin-bottom:18px;transition:.15s}
+  .other:focus-within{border-color:var(--red)}
+  .other span{font-size:20px;font-weight:800;color:var(--muted);margin-right:6px}
+  .other input{border:0;outline:0;font-size:20px;font-weight:800;width:100%;font-family:inherit;color:var(--navy)}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--navy)}
+  .field select,.field input[type=text],.field input[type=email],.field input[type=tel]{width:100%;height:48px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+  .field select:focus,.field input:focus{outline:0;border-color:var(--navy)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:520px){.row2{grid-template-columns:1fr}}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink);margin:6px 0 18px;cursor:pointer}
+  .check input{width:18px;height:18px;margin-top:2px;accent-color:var(--red)}
+  .impact-line{background:#f3f6fb;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;font-size:14px;margin-bottom:18px}
+  .impact-line b{color:var(--navy)}
+  .summary{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px dashed var(--line);margin-top:4px;font-size:15px}
+  .summary b{font-size:22px;color:var(--navy)}
+  .panel .btn-red{width:100%;padding:17px;font-size:17px;margin-top:8px}
+  .secure{display:flex;justify-content:center;gap:16px;align-items:center;margin-top:14px;font-size:12px;color:var(--muted)}
+  .secure .pay{display:flex;gap:6px}
+  .secure .pay span{display:inline-block;padding:3px 7px;border:1px solid var(--line);border-radius:5px;font-weight:700;font-size:10px;color:var(--navy)}
+  .step{display:none}
+  .step.on{display:block}
+  .stepper{display:flex;gap:8px;margin-bottom:20px;font-size:12px;font-weight:700;color:var(--muted)}
+  .stepper span{flex:1;padding:8px 0;border-top:3px solid var(--line);text-transform:uppercase;letter-spacing:.6px}
+  .stepper span.on{border-color:var(--red);color:var(--red-dark)}
+  .back{background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;font-size:14px;margin-top:12px;font-family:inherit}
+  .thanks{text-align:center;padding:20px 0}
+  .thanks .big{font-size:56px}
+  .thanks h3{font-size:24px;font-weight:800;margin:10px 0 6px}
+  .thanks p{color:var(--muted)}
+
+  /* side column */
+  .why{background:var(--navy);color:#fff}
+  .why h3{font-size:20px;font-weight:800;margin-bottom:14px}
+  .why ul{list-style:none;display:grid;gap:14px}
+  .why li{display:flex;gap:12px;font-size:15px;color:rgba(255,255,255,.88)}
+  .why li i{flex:none;width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-style:normal}
+  .why .quote{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-style:italic;color:rgba(255,255,255,.85);font-size:15px}
+  .why .quote b{display:block;font-style:normal;margin-top:8px;font-size:13px;color:var(--gold)}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center}
+  .tile b{display:block;font-size:34px;font-weight:800;color:var(--navy)}
+  .tile span{font-size:12px;color:var(--muted);font-weight:600}
+
+  /* ---------- sections ---------- */
+  section.block{padding:72px 0}
+  .sec-head{max-width:640px;margin-bottom:36px}
+  .sec-head .eyebrow{color:var(--red)}
+  .sec-head .eyebrow::before{background:var(--red)}
+  .sec-head h2{font-size:clamp(36px,5vw,56px);font-weight:800;line-height:.98}
+  .sec-head p{color:var(--muted);margin-top:10px;font-size:16px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:10px;transition:.2s}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#eef2f7}
+  .card h3{font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .card p{color:var(--muted);font-size:14px;flex:1}
+  .card a{font-weight:700;color:var(--red-dark);text-decoration:none;font-size:14px}
+  .card a:hover{text-decoration:underline}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @media (max-width:860px){.split{grid-template-columns:1fr}}
+  .advocate{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border-radius:20px;padding:48px;position:relative;overflow:hidden}
+  .advocate::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(242,182,50,.12)}
+  .advocate h2{font-size:44px;font-weight:800;margin-bottom:12px;line-height:.98}
+  .advocate p{color:rgba(255,255,255,.85);margin-bottom:22px;max-width:520px}
+  .steps{display:grid;gap:14px}
+  .steps div{display:flex;gap:14px;align-items:flex-start}
+  .steps b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:800}
+  .steps p{margin:0;color:var(--ink)}
+  .steps p strong{display:block;color:var(--navy)}
+
+  .faq{display:grid;gap:10px;max-width:780px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";font-size:22px;color:var(--red);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;color:var(--muted);font-size:14px}
+
+  .final{background:var(--red);color:#fff;text-align:center;padding:64px 0}
+  .final h2{font-size:clamp(40px,6vw,72px);font-weight:900;line-height:.95}
+  .final p{opacity:.9;margin:10px 0 24px}
+  .final .btn{background:#fff;color:var(--red-dark)}
+
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:48px 0 28px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:30px}
+  @media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr}}
+  footer h4{color:#fff;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px}
+  footer ul{list-style:none;display:grid;gap:8px}
+  footer a{text-decoration:none}
+  footer a:hover{color:#fff}
+  .fbot{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px}
+
+  /* ---------- modern polish ---------- */
+  .hero .wrap > *{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .wrap > :nth-child(2){animation-delay:.1s}.hero .wrap > :nth-child(3){animation-delay:.2s}.hero .wrap > :nth-child(4){animation-delay:.3s}.hero .wrap > :nth-child(5){animation-delay:.4s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero h1 .brand b{background:linear-gradient(90deg,#ffd166,#f2b632 50%,#ffe9a8);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .trust > div{padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px)}
+  .hero .sky{animation:drift 14s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
+  .panel{box-shadow:0 30px 60px -20px rgba(11,31,58,.35),0 0 0 1px rgba(255,255,255,.6) inset}
+  .btn-red{background:linear-gradient(135deg,#e62e34,#c4191f)}
+  .btn-red::after{content:"→";transition:transform .2s}
+  .btn-red:hover::after{transform:translateX(3px)}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .card{position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:.3s}
+  .card:hover::before{transform:scaleX(1)}
+  .tile b{background:linear-gradient(135deg,var(--navy),#2a5494);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- donor wall ticker ---------- */
+  .wall{padding:56px 0 8px;overflow:hidden}
+  .wall .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+  .wall h2{font-size:34px;font-weight:800}
+  .wall .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--red-dark)}
+  .wall .live i{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(215,38,44,.5)}70%{box-shadow:0 0 0 8px rgba(215,38,44,0)}}
+  .ticker{position:relative;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .track{display:flex;gap:16px;width:max-content;animation:slide 60s linear infinite}
+  .track:hover{animation-play-state:paused}
+  @keyframes slide{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  .ticker.row2 .track{animation-duration:75s;animation-direction:reverse}
+  .dcard{flex:none;width:320px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 6px 18px rgba(11,31,58,.06)}
+  .dcard .top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .dcard .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;font-size:15px;background:linear-gradient(135deg,var(--navy),#2a5494)}
+  .dcard .av.anon{background:linear-gradient(135deg,#8a94a6,#5b6578)}
+  .dcard .who b{display:block;font-size:14px}
+  .dcard .who span{font-size:12px;color:var(--muted)}
+  .dcard .amt{margin-left:auto;font-weight:800;color:var(--red-dark);font-size:14px;background:#fff4f4;padding:4px 10px;border-radius:999px}
+  .dcard p{font-size:14px;color:var(--ink);line-height:1.45}
+  .dcard.new{outline:2px solid var(--gold);animation:pop .5s}
+  @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+  .ticker+.ticker{margin-top:16px}
+  .msgbox{width:100%;min-height:84px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;font-size:14px;resize:vertical;color:var(--ink)}
+  .msgbox:focus{outline:0;border-color:var(--navy)}
+  .seg.small button{padding:9px;font-size:13px}
+
+  /* ---------- video ---------- */
+  .vid{background:var(--navy);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(11,31,58,.5);position:relative}
+  .vid::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(242,182,50,.25),transparent 40%,rgba(215,38,44,.2));pointer-events:none;z-index:1}
+  .vid video{display:block;width:100%;aspect-ratio:16/9;background:#000;position:relative;z-index:2}
+  .vid-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;color:rgba(255,255,255,.85);font-size:14px;font-weight:600;flex-wrap:wrap;position:relative;z-index:2}
+  .vid-bar .btn{padding:11px 20px;font-size:14px}
+
+  /* ---------- big scrolling LIVEHERO (large screens) ---------- */
+  .bigword{display:none}
+  @media (min-width:1024px){
+    .hero{min-height:760px}
+    .hero .wrap{padding:110px 0 300px}
+    .bigword{display:block;position:absolute;left:0;right:0;top:84px;z-index:1;overflow:hidden;pointer-events:none;
+      mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+    .bigtrack{display:flex;width:max-content;animation:bigslide 38s linear infinite}
+    .bigtrack span{white-space:nowrap;font-size:260px;line-height:1;font-weight:800;letter-spacing:8px;padding-right:40px;
+      color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.14);
+      text-shadow:none}
+    .bigtrack span i{font-style:normal;color:rgba(242,182,50,.35);-webkit-text-stroke:0}
+    @keyframes bigslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .hero .caption{bottom:16px}
+  }
+  @media (prefers-reduced-motion:reduce){.bigtrack,.track,.hero .sky{animation:none}}
+
+  /* ---------- founder ---------- */
+  .founder{padding:96px 0 72px;background:linear-gradient(180deg,var(--bg) 0%,#fff 100%)}
+  .fgrid2{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+  @media (max-width:900px){.fgrid2{grid-template-columns:1fr;gap:32px}}
+  .frame{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-2));box-shadow:0 40px 70px -30px rgba(10,26,47,.6)}
+  .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;z-index:1}
+  .portrait{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:140px;font-weight:900;color:rgba(255,255,255,.08);letter-spacing:4px}
+  .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,26,47,.75));z-index:1;pointer-events:none}
+  .stripe{position:absolute;left:0;right:0;bottom:0;height:10px;background:linear-gradient(90deg,var(--red) 0 50%,var(--gold) 50% 100%);z-index:2}
+  .fcred{margin-top:18px;display:grid;gap:3px;font-size:14px;color:var(--muted)}
+  .fcred b{font-family:var(--display);font-size:28px;color:var(--navy);text-transform:uppercase;letter-spacing:1px;line-height:1}
+  .fstory h2{font-size:clamp(38px,5vw,60px);font-weight:900;line-height:.95;color:var(--navy);margin:8px 0 22px}
+  .fstory blockquote{border-left:5px solid var(--red);padding:6px 0 6px 20px;font-size:19px;line-height:1.5;color:var(--ink);margin-bottom:20px;font-style:italic}
+  .fstory blockquote cite{display:block;margin-top:8px;font-style:normal;font-family:var(--display);text-transform:uppercase;letter-spacing:1.5px;font-size:14px;color:var(--red-dark)}
+  .fstory p{color:var(--muted);margin-bottom:14px;font-size:16px}
+  .fvals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 28px}
+  @media (max-width:600px){.fvals{grid-template-columns:1fr}}
+  .fvals div{border-top:3px solid var(--gold);padding-top:10px}
+  .fvals b{display:block;font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:1px;color:var(--navy)}
+  .fvals span{font-size:13px;color:var(--muted)}
+
+  /* ---------- walk a mile ---------- */
+  .walk{padding:88px 0;background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .walk::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 85% 0%,rgba(179,18,28,.35),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(212,160,23,.18),transparent 60%);pointer-events:none}
+  .walk .wrap{position:relative}
+  .walk .sec-head h2{color:#fff}.walk .sec-head p{color:rgba(255,255,255,.75)}
+  .wtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+  @media (max-width:700px){.wtabs{grid-template-columns:1fr}}
+  .wtabs button{text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 18px;color:#fff;cursor:pointer;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;transition:.2s;font-family:inherit}
+  .wtabs button i{grid-row:1/3;font-style:normal;font-family:var(--display);font-size:30px;font-weight:800;color:var(--gold);opacity:.8}
+  .wtabs button b{font-family:var(--display);font-size:24px;text-transform:uppercase;letter-spacing:1px;line-height:1}
+  .wtabs button span{font-size:13px;color:rgba(255,255,255,.7)}
+  .wtabs button:hover{background:rgba(255,255,255,.1)}
+  .wtabs button.on{background:#fff;color:var(--navy);border-color:#fff;box-shadow:0 16px 40px -14px rgba(0,0,0,.6)}
+  .wtabs button.on span{color:var(--muted)}.wtabs button.on i{color:var(--red)}
+  .wpane{display:none;animation:rise .5s cubic-bezier(.2,.7,.2,1)}
+  .wpane.on{display:block}
+  .wgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}
+  @media (max-width:860px){.wgrid{grid-template-columns:1fr}}
+  .walk h3{font-family:var(--display);font-size:34px;text-transform:uppercase;letter-spacing:.5px;line-height:1}
+
+  /* 01 give */
+  .wscene{background:linear-gradient(160deg,#fff,#f6f3ec);color:var(--ink);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:14px;min-height:380px}
+  .wtime{font-family:var(--display);font-size:64px;font-weight:900;color:var(--red);line-height:1;letter-spacing:1px}
+  .wscene h3{color:var(--navy)}
+  .wscene p{color:var(--muted);font-size:16px}
+  .wimpact{margin-top:auto;background:var(--navy);color:#fff;padding:14px 16px;border-radius:12px;font-size:15px;border-left:5px solid var(--gold)}
+  .wimpact b{font-family:var(--display);font-size:24px;color:var(--gold);margin-right:6px}
+  .wctl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+  .wctl button{width:44px;height:44px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);font-size:18px;cursor:pointer;font-weight:800}
+  .wctl button:hover{background:var(--navy);color:#fff}
+  .wdots{display:flex;gap:8px}.wdots i{width:10px;height:10px;border-radius:50%;background:var(--line);transition:.2s}.wdots i.on{background:var(--red);transform:scale(1.3)}
+  .wpath{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px;display:flex;flex-direction:column}
+  .wprog{height:6px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin-bottom:18px}
+  .wprog i{display:block;height:100%;width:10%;background:linear-gradient(90deg,var(--gold),var(--red));transition:width .4s}
+  .wpath ol{list-style:none;display:grid;gap:8px;margin-bottom:18px}
+  .wpath li{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;cursor:pointer;color:rgba(255,255,255,.6);transition:.2s}
+  .wpath li b{font-family:var(--display);font-size:18px;width:52px;color:var(--gold)}
+  .wpath li:hover{background:rgba(255,255,255,.06);color:#fff}
+  .wpath li.on{background:#fff;color:var(--navy)}.wpath li.on b{color:var(--red)}
+  .wpath li.done{color:rgba(255,255,255,.85)}
+  .wpath .btn{margin-top:auto}
+
+  /* 02 shop */
+  .wgrid.shop{grid-template-columns:1.3fr .7fr}
+  @media (max-width:860px){.wgrid.shop{grid-template-columns:1fr}}
+  .products{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media (max-width:520px){.products{grid-template-columns:1fr}}
+  .prod{background:#fff;color:var(--ink);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .prod:hover{transform:translateY(-3px)}
+  .prod .art{height:150px;display:grid;place-items:center;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:22px;color:#fff;text-align:center;padding:14px;line-height:1.05}
+  .prod .art small{display:block;font-size:11px;letter-spacing:3px;opacity:.75;margin-top:6px}
+  .prod .pb{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .prod .pb b{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.5px;color:var(--navy)}
+  .prod .pb span{font-size:13px;color:var(--muted)}
+  .prod .pr{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+  .prod .pr b{font-size:18px;font-family:var(--display)}
+  .prod .pr em{font-style:normal;font-size:12px;color:var(--red-dark);font-weight:700;background:#fff4f4;padding:3px 8px;border-radius:999px}
+  .prod .qty{display:flex;align-items:center;gap:8px}
+  .prod .qty button{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--navy);background:#fff;color:var(--navy);font-weight:800;cursor:pointer}
+  .prod .qty button:hover{background:var(--navy);color:#fff}
+  .prod .qty output{font-family:var(--display);font-size:18px;width:20px;text-align:center}
+  .cart{background:#fff;color:var(--ink);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+  .cart h3{color:var(--navy)}
+  .cart-lines{display:grid;gap:6px;font-size:14px;min-height:60px}
+  .cart-lines .empty{color:var(--muted);font-size:13px}
+  .cart-lines div{display:flex;justify-content:space-between}
+  .cart-sum,.cart-give{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+  .cart-sum{border-top:1px dashed var(--line);padding-top:10px}.cart-sum b{font-family:var(--display);font-size:24px}
+  .cart-give{color:var(--red-dark);font-weight:700}.cart-give b{font-family:var(--display);font-size:28px;color:var(--red)}
+  .cart-bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden}.cart-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--red));transition:width .4s}
+  .fine{font-size:12px;color:var(--muted);margin-top:4px}
+
+  /* 03 advocate */
+  .wgrid.voice{grid-template-columns:.85fr 1.15fr}
+  @media (max-width:860px){.wgrid.voice{grid-template-columns:1fr}}
+  .vform{background:#fff;color:var(--ink);border-radius:18px;padding:24px}
+  .vform .field label small{font-weight:500;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);font-family:inherit;transition:.15s}
+  .chips button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .vletter{display:flex;flex-direction:column;gap:12px}
+  .paper{background:#fffdf7;color:var(--ink);border-radius:6px;padding:30px 32px;font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.65;box-shadow:0 30px 50px -20px rgba(0,0,0,.6);flex:1;position:relative}
+  .paper::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--red),var(--gold));border-radius:6px 0 0 6px}
+  .paper .to{font-weight:700;margin-bottom:14px}
+  .paper p{margin-bottom:12px}
+  .paper .sig{margin-top:16px}
+  .vact{display:flex;gap:10px;flex-wrap:wrap}
+  .vact .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+  .walk .fine{color:rgba(255,255,255,.6)}
+
+  /* ---------- founder slideshow ---------- */
+  .slides img{opacity:0;transition:opacity 1.1s ease,transform 7s linear;transform:scale(1.04)}
+  .slides img.on{opacity:1;transform:scale(1.12)}
+  .scap{position:absolute;left:18px;right:18px;bottom:26px;z-index:3;color:#fff;font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  .sbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:rgba(10,26,47,.45);color:#fff;font-size:26px;line-height:1;cursor:pointer;backdrop-filter:blur(4px);opacity:0;transition:.2s}
+  .slides:hover .sbtn{opacity:1}
+  .sbtn.prev{left:12px}.sbtn.next{right:12px}
+  .sbtn:hover{background:var(--red);border-color:var(--red)}
+  .sdots{position:absolute;right:18px;top:16px;z-index:3;display:flex;gap:6px}
+  .sdots i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+  .sdots i::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left}
+  .sdots i.on::after{animation:sfill 6s linear forwards}
+  .sdots i.done::after{transform:scaleX(1)}
+  @keyframes sfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="mark"><svg viewBox="0 0 32 36" width="22" height="25" aria-hidden="true"><path d="M16 1 L30 6 V18 C30 27 23 33 16 35 C9 33 2 27 2 18 V6 Z" fill="#fff"/><path d="M16 8 l2.4 5 5.4.6-4 3.7 1.1 5.4L16 20l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z" fill="#b3121c"/></svg></span><span>Live<b>Hero</b></span></a>
+    <ul>
+      <li><a href="#founder">Our Ambassador</a></li>
+      <li><a href="#">Programs</a></li>
+      <li><a href="#ways">Ways to Give</a></li>
+      <li><a href="#walk">Walk a Mile</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#advocate">Advocate</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a class="btn btn-red" href="#donate">Donate</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars"></div>
+  <div class="bigword" aria-hidden="true"><div class="bigtrack"><span>LIVEHERO <i>★</i> LIVEHERO <i>★</i> LIVEHERO <i>★</i> LIVEHERO <i>★</i> </span><span>LIVEHERO <i>★</i> LIVEHERO <i>★</i> LIVEHERO <i>★</i> LIVEHERO <i>★</i> </span></div></div>
+  <div class="wrap">
+    <div class="eyebrow">Ways to Give · A national veterans foundation</div>
+    <h1>No hero<br>stands alone.<span class="brand">Live<b>Hero</b></span></h1>
+    <p class="lede">Led by a wounded Marine who lived the broken system and refused to leave anyone else in it. Your gift puts a hero back on their feet: care, a roof, a job, and someone who answers the call.</p>
+    <div class="cta">
+      <a class="btn btn-red" href="#donate">Give now</a>
+      <a class="btn btn-ghost" href="#watch">▶ Watch the story</a>
+    </div>
+    <div class="trust">
+      <div><b>Marine</b>ambassador-led</div>
+      <div><b>501(c)(19)</b>veterans organization</div>
+      <div><b>24/7</b>someone answers the call</div>
+    </div>
+  </div>
+
+  <!-- Manhattan skyline -->
+  <svg class="sky" viewBox="0 0 1440 440" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a3a6e" stop-opacity="0"/><stop offset="1" stop-color="#2b5fa6" stop-opacity=".9"/></linearGradient>
+      <linearGradient id="far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#20457f"/><stop offset="1" stop-color="#1a3a6e"/></linearGradient>
+      <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#18365f"/><stop offset="1" stop-color="#102648"/></linearGradient>
+      <linearGradient id="near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f2342"/><stop offset="1" stop-color="#081529"/></linearGradient>
+      <linearGradient id="glassL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfe0ff"/><stop offset="1" stop-color="#5f9fdf"/></linearGradient>
+      <linearGradient id="glassR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b7cc2"/><stop offset="1" stop-color="#17407a"/></linearGradient>
+      <linearGradient id="glassV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset=".6" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>
+      <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1f3a"/><stop offset="1" stop-color="#050f1f"/></linearGradient>
+      <pattern id="winA" width="7" height="10" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="3" height="4" fill="#ffe7a8" opacity=".55"/></pattern>
+      <pattern id="winB" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="3.5" height="4.5" fill="#ffd98a" opacity=".32"/><rect x="5.5" y="6" width="2.5" height="3" fill="#cfe6ff" opacity=".4"/></pattern>
+      <pattern id="winC" width="5" height="8" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="2" height="3" fill="#ffefc2" opacity=".28"/></pattern>
+      <pattern id="winW" width="6" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="2.5" height="3" fill="#fff4d6" opacity=".22"/></pattern>
+      <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="softglow"><feGaussianBlur stdDeviation="6"/></filter>
+    </defs>
+
+    <!-- tribute in light -->
+    <polygon points="705,0 745,0 775,400 675,400" fill="url(#beam)"/>
+    <polygon points="815,0 855,0 885,400 785,400" fill="url(#beam)"/>
+
+    <!-- ===== FAR LAYER: Midtown in the haze ===== -->
+    <g fill="url(#far)" opacity=".85">
+      <!-- generic far blocks -->
+      <rect x="0" y="300" width="60" height="140"/><rect x="70" y="285" width="36" height="155"/><rect x="112" y="310" width="50" height="130"/>
+      <rect x="420" y="290" width="44" height="150"/><rect x="470" y="305" width="30" height="135"/><rect x="990" y="300" width="40" height="140"/>
+      <rect x="1040" y="280" width="34" height="160"/><rect x="1380" y="300" width="60" height="140"/>
+      <!-- Empire State Building -->
+      <g>
+        <rect x="1128" y="300" width="84" height="140"/>
+        <rect x="1136" y="260" width="68" height="40"/>
+        <rect x="1142" y="190" width="56" height="70"/>
+        <rect x="1148" y="150" width="44" height="40"/>
+        <rect x="1154" y="128" width="32" height="22"/>
+        <rect x="1160" y="112" width="20" height="16"/>
+        <rect x="1166" y="96" width="8" height="16"/>
+        <rect x="1169" y="60" width="2" height="36"/>
+      </g>
+      <!-- Chrysler Building -->
+      <g>
+        <rect x="1240" y="300" width="60" height="140"/>
+        <rect x="1247" y="230" width="46" height="70"/>
+        <rect x="1251" y="200" width="38" height="30"/>
+        <path d="M1251 200 L1289 200 L1283 190 L1257 190 Z"/>
+        <path d="M1256 190 L1284 190 L1279 180 L1261 180 Z"/>
+        <path d="M1260 180 L1280 180 L1276 171 L1264 171 Z"/>
+        <path d="M1263 171 L1277 171 L1274 163 L1266 163 Z"/>
+        <path d="M1266 163 L1274 163 L1271 156 L1269 156 Z"/>
+        <rect x="1269" y="120" width="2" height="36"/>
+      </g>
+      <!-- One Vanderbilt -->
+      <g><rect x="1316" y="270" width="52" height="170"/><polygon points="1316,270 1368,270 1356,200 1328,200"/><polygon points="1328,200 1356,200 1346,170 1338,170"/><rect x="1341" y="140" width="2" height="30"/></g>
+      <!-- 30 Hudson Yards / Bank of America Tower far left -->
+      <g><polygon points="180,440 180,250 220,230 250,250 250,440"/><rect x="214" y="200" width="2" height="30"/></g>
+      <polygon points="270,440 270,270 300,255 330,270 330,440"/>
+    </g>
+    <!-- far window glow -->
+    <g fill="url(#winW)" opacity=".8">
+      <rect x="1136" y="262" width="68" height="178"/><rect x="1142" y="192" width="56" height="70"/><rect x="1247" y="232" width="46" height="208"/>
+      <rect x="1316" y="272" width="52" height="168"/><rect x="180" y="252" width="70" height="188"/>
+    </g>
+    <!-- haze -->
+    <rect x="0" y="250" width="1440" height="190" fill="url(#haze)" opacity=".55"/>
+
+    <!-- ===== MID LAYER: Lower Manhattan ===== -->
+    <g fill="url(#mid)">
+      <!-- 56 Leonard (stacked boxes) -->
+      <g>
+        <rect x="40" y="330" width="50" height="110"/><rect x="34" y="310" width="56" height="20"/><rect x="42" y="290" width="54" height="20"/>
+        <rect x="36" y="270" width="50" height="20"/><rect x="44" y="250" width="56" height="20"/><rect x="38" y="232" width="52" height="18"/><rect x="46" y="216" width="46" height="16"/>
+      </g>
+      <!-- 8 Spruce Street (Gehry) -->
+      <path d="M130 440 L130 230 Q140 222 150 228 L150 230 Q165 220 178 228 L186 232 L186 440 Z"/>
+      <!-- Woolworth Building (gothic) -->
+      <g>
+        <rect x="230" y="320" width="80" height="120"/><rect x="250" y="250" width="40" height="70"/><rect x="254" y="236" width="32" height="14"/>
+        <polygon points="254,236 286,236 282,226 258,226"/><polygon points="258,226 282,226 276,216 264,216"/><polygon points="264,216 276,216 270,196"/>
+        <rect x="236" y="300" width="4" height="20"/><rect x="300" y="300" width="4" height="20"/>
+      </g>
+      <!-- 7 WTC -->
+      <polygon points="470,440 470,210 540,210 540,440"/>
+      <!-- 3 WTC -->
+      <g><rect x="600" y="440" width="0" height="0"/><polygon points="596,440 596,150 660,150 660,440"/><rect x="606" y="130" width="44" height="20"/><rect x="616" y="118" width="24" height="12"/>
+        <!-- K-braces -->
+        <path d="M596 230 L660 300 M660 230 L596 300 M596 300 L660 370 M660 300 L596 370" stroke="#2f5f9d" stroke-width="2" fill="none"/></g>
+      <!-- 4 WTC -->
+      <polygon points="880,440 880,160 936,160 936,440"/>
+      <!-- Brookfield Place towers -->
+      <g><rect x="960" y="280" width="54" height="160"/><polygon points="960,280 1014,280 987,250"/><rect x="1024" y="300" width="50" height="140"/><path d="M1024 300 Q1049 270 1074 300 Z"/></g>
+      <!-- generic lower buildings -->
+      <rect x="330" y="300" width="60" height="140"/><rect x="400" y="320" width="56" height="120"/><rect x="548" y="330" width="44" height="110"/>
+      <rect x="1090" y="320" width="60" height="120"/><rect x="1160" y="340" width="70" height="100"/><rect x="1240" y="325" width="60" height="115"/><rect x="1310" y="345" width="130" height="95"/>
+    </g>
+    <g fill="url(#winB)" opacity=".9">
+      <rect x="230" y="322" width="80" height="118"/><rect x="250" y="252" width="40" height="70"/><rect x="470" y="212" width="70" height="228"/>
+      <rect x="596" y="152" width="64" height="288"/><rect x="880" y="162" width="56" height="278"/><rect x="960" y="282" width="54" height="158"/><rect x="1024" y="302" width="50" height="138"/>
+      <rect x="130" y="232" width="56" height="208"/><rect x="40" y="218" width="54" height="222"/><rect x="330" y="302" width="60" height="138"/><rect x="1090" y="322" width="60" height="118"/>
+    </g>
+    <!-- 3 WTC crown lights -->
+    <rect x="606" y="130" width="44" height="3" fill="#cfe6ff" opacity=".8" filter="url(#glow)"/>
+
+    <!-- ===== ONE WORLD TRADE CENTER ===== -->
+    <g>
+      <!-- antenna glow + mast -->
+      <ellipse cx="780" cy="22" rx="10" ry="10" fill="#fff" opacity=".35" filter="url(#softglow)"/>
+      <rect x="779" y="0" width="2.4" height="52" fill="#e8f3ff"/>
+      <rect x="776" y="12" width="8" height="2" fill="#e8f3ff"/><rect x="775" y="28" width="10" height="2" fill="#e8f3ff"/>
+      <polygon points="770,52 790,52 787,44 773,44" fill="#d6e9ff"/>
+      <!-- the tower: square base, chamfered to octagon at mid, square at top (rotated 45°) -->
+      <!-- left face -->
+      <polygon points="744,440 752,60 780,56 780,440" fill="url(#glassL)"/>
+      <!-- right face -->
+      <polygon points="780,440 780,56 808,60 816,440" fill="url(#glassR)"/>
+      <!-- chamfer edges (the triangular faces) -->
+      <polygon points="752,60 780,56 744,440 738,440" fill="#8fc3f2" opacity=".55"/>
+      <polygon points="808,60 780,56 816,440 822,440" fill="#1c4b8a" opacity=".8"/>
+      <!-- vertical sheen -->
+      <rect x="744" y="56" width="78" height="384" fill="url(#glassV)"/>
+      <!-- window mullions -->
+      <g stroke="#ffffff" stroke-opacity=".12" stroke-width="1">
+        <line x1="762" y1="58" x2="757" y2="440"/><line x1="771" y1="57" x2="768" y2="440"/><line x1="789" y1="57" x2="792" y2="440"/><line x1="798" y1="58" x2="803" y2="440"/>
+      </g>
+      <g fill="url(#winC)"><polygon points="746,440 753,62 807,62 814,440"/></g>
+      <!-- floor bands -->
+      <g stroke="#0b1f3a" stroke-opacity=".22" stroke-width="1">
+        <line x1="748" y1="120" x2="812" y2="120"/><line x1="747" y1="180" x2="813" y2="180"/><line x1="746" y1="240" x2="814" y2="240"/><line x1="745" y1="300" x2="815" y2="300"/><line x1="744" y1="360" x2="816" y2="360"/>
+      </g>
+      <!-- podium -->
+      <rect x="728" y="372" width="104" height="68" fill="#163b6e"/>
+      <rect x="728" y="372" width="104" height="68" fill="url(#winA)" opacity=".35"/>
+      <rect x="728" y="372" width="104" height="2" fill="#9fd0ff" opacity=".6"/>
+      <!-- beacon -->
+      <circle cx="780" cy="6" r="3" fill="#fff" filter="url(#glow)"><animate attributeName="opacity" values="1;.15;1" dur="2.4s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <!-- ===== NEAR LAYER: foreground silhouettes ===== -->
+    <g fill="url(#near)">
+      <rect x="0" y="380" width="120" height="60"/><rect x="200" y="395" width="110" height="45"/><rect x="360" y="385" width="90" height="55"/>
+      <rect x="540" y="400" width="60" height="40"/><rect x="660" y="392" width="60" height="48"/><rect x="850" y="398" width="40" height="42"/>
+      <rect x="945" y="388" width="80" height="52"/><rect x="1100" y="396" width="120" height="44"/><rect x="1300" y="384" width="140" height="56"/>
+      <!-- Oculus ribs -->
+      <path d="M660 440 Q700 392 740 440 Z" fill="#0b1f3a"/><g stroke="#cfe6ff" stroke-opacity=".5" stroke-width="1.2" fill="none"><path d="M666 440 Q700 400 734 440"/><path d="M674 440 Q700 406 726 440"/><path d="M682 440 Q700 412 718 440"/><path d="M690 440 Q700 420 710 440"/></g>
+      <!-- memorial pools -->
+      <rect x="688" y="424" width="52" height="12" rx="2" fill="#061225"/><rect x="848" y="424" width="52" height="12" rx="2" fill="#061225"/>
+      <rect x="694" y="427" width="40" height="6" rx="1" fill="#3b7cc2" opacity=".55"/><rect x="854" y="427" width="40" height="6" rx="1" fill="#3b7cc2" opacity=".55"/>
+    </g>
+    <g fill="url(#winA)" opacity=".5"><rect x="0" y="382" width="120" height="58"/><rect x="360" y="387" width="90" height="53"/><rect x="945" y="390" width="80" height="50"/><rect x="1300" y="386" width="140" height="54"/></g>
+
+    <!-- water -->
+    <rect x="0" y="436" width="1440" height="4" fill="url(#water)"/>
+  </svg>
+  <div class="caption">Lower Manhattan · One World Trade Center</div>
+</section>
+
+<!-- DONATION PANEL -->
+<section class="donate-band" id="donate">
+  <div class="wrap donate-grid">
+    <form class="panel" id="donateForm" novalidate>
+      <div class="stepper"><span class="on" data-s="1">1 · Your gift</span><span data-s="2">2 · Your details</span><span data-s="3">3 · Payment</span></div>
+
+      <!-- STEP 1 -->
+      <div class="step on" data-step="1">
+        <h2>Put a hero back on their feet</h2>
+        <p class="sub">Choose a one-time or monthly gift. Every dollar supports veterans and their families.</p>
+
+        <div class="seg" role="tablist">
+          <button type="button" class="on" data-freq="once">Give once</button>
+          <button type="button" data-freq="monthly">Give monthly</button>
+        </div>
+
+        <div class="amounts" id="amounts">
+          <button type="button" data-amt="25">$25<small>Care kit</small></button>
+          <button type="button" data-amt="50">$50<small>Warm meals</small></button>
+          <button type="button" class="on" data-amt="100">$100<small>Counseling hour</small></button>
+          <button type="button" data-amt="250">$250<small>Housing support</small></button>
+          <button type="button" data-amt="500">$500<small>Job placement</small></button>
+          <button type="button" data-amt="1000">$1,000<small>Hero sponsor</small></button>
+        </div>
+        <div class="other"><span>$</span><input type="text" inputmode="decimal" id="otherAmt" placeholder="Other amount" aria-label="Other amount"></div>
+
+        <div class="impact-line" id="impactLine"><b>$100</b> funds one hour of counseling for a veteran in crisis.</div>
+
+        <div class="field">
+          <label for="designate">Direct my gift to</label>
+          <select id="designate">
+            <option>Where it's needed most</option>
+            <option>Crisis &amp; mental-health support</option>
+            <option>Housing &amp; homelessness prevention</option>
+            <option>Career transition &amp; job placement</option>
+            <option>Family &amp; caregiver support</option>
+            <option>Honor &amp; memorial fund</option>
+          </select>
+        </div>
+
+        <label class="check"><input type="checkbox" id="dedicate"> Make this gift in honor or in memory of someone</label>
+        <div class="field" id="dedicateField" style="display:none">
+          <div class="row2">
+            <div><label for="dedName">Honoree name</label><input type="text" id="dedName" placeholder="e.g. Sgt. James Carter"></div>
+            <div><label for="dedType">Dedication</label><select id="dedType"><option>In honor of</option><option>In memory of</option></select></div>
+          </div>
+        </div>
+
+        <label class="check"><input type="checkbox" id="coverFees" checked> Add <b id="feeAmt">$3.20</b> to cover processing fees so 100% of my gift reaches veterans</label>
+
+        <div class="summary"><span id="summaryLabel">Your one-time gift</span><b id="total">$103.20</b></div>
+        <button type="button" class="btn btn-red" data-next="2">Continue</button>
+        <div class="secure">🔒 Secure, encrypted donation <div class="pay"><span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span></div></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step" data-step="2">
+        <h2>Your details</h2>
+        <p class="sub">We'll email your tax receipt here.</p>
+        <div class="row2">
+          <div class="field"><label for="fn">First name</label><input type="text" id="fn" autocomplete="given-name"></div>
+          <div class="field"><label for="ln">Last name</label><input type="text" id="ln" autocomplete="family-name"></div>
+        </div>
+        <div class="field"><label for="em">Email</label><input type="email" id="em" autocomplete="email"></div>
+        <div class="field"><label for="ph">Phone (optional)</label><input type="tel" id="ph" autocomplete="tel"></div>
+        <div class="field"><label for="addr">Billing address</label><input type="text" id="addr" autocomplete="street-address"></div>
+        <div class="row2">
+          <div class="field"><label for="city">City</label><input type="text" id="city" autocomplete="address-level2"></div>
+          <div class="field"><label for="zip">ZIP</label><input type="text" id="zip" autocomplete="postal-code"></div>
+        </div>
+        <div class="field">
+          <label for="msg">Leave a message on the Donor Wall (optional)</label>
+          <textarea class="msgbox" id="msg" maxlength="160" placeholder="For my dad, a Marine. Thank you for your service."></textarea>
+        </div>
+        <div class="field">
+          <label>Show on the Donor Wall as</label>
+          <div class="seg small"><button type="button" class="on" data-show="name">My name</button><button type="button" data-show="anon">Anonymous</button></div>
+        </div>
+        <label class="check"><input type="checkbox" id="updates" checked> Send me stories of the veterans my gift supports</label>
+        <div class="summary"><span id="summaryLabel2">Your one-time gift</span><b id="total2">$103.20</b></div>
+        <button type="button" class="btn btn-red" data-next="3">Continue to payment</button>
+        <button type="button" class="back" data-next="1">← Back</button>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step" data-step="3">
+        <h2>Payment</h2>
+        <p class="sub">Your card is processed by our PCI-compliant payment partner. LiveHero never stores card numbers.</p>
+        <div class="field">
+          <label>Payment method</label>
+          <div class="seg"><button type="button" class="on" data-pm="card">Credit / debit card</button><button type="button" data-pm="paypal">PayPal</button></div>
+        </div>
+        <div id="cardFields">
+          <div class="field"><label>Card details</label>
+            <div style="border:1.5px dashed var(--line);border-radius:10px;padding:16px;color:var(--muted);font-size:14px;background:#fafbfd">
+              Secure card element (Stripe / Braintree) mounts here in production.
+            </div>
+          </div>
+        </div>
+        <div class="field"><label for="matchCo">Does your employer match gifts? (optional)</label><input type="text" id="matchCo" placeholder="Start typing your company name"></div>
+        <div class="summary"><span id="summaryLabel3">Your one-time gift</span><b id="total3">$103.20</b></div>
+        <button type="submit" class="btn btn-red" id="submitBtn">Donate $103.20</button>
+        <button type="button" class="back" data-next="2">← Back</button>
+        <div class="secure">🔒 256-bit SSL · LiveHero is a 501(c)(19) veterans organization. Gifts are tax-deductible to the extent allowed by law.</div>
+      </div>
+
+      <!-- THANKS -->
+      <div class="step" data-step="4">
+        <div class="thanks">
+          <div class="big">🇺🇸</div>
+          <h3>Thank you for standing with our heroes.</h3>
+          <p>A receipt is on its way to your inbox. Your gift goes to work for veterans today.</p>
+          <p style="margin-top:18px"><a class="btn btn-outline" href="#ways">See other ways to give</a></p>
+        </div>
+      </div>
+    </form>
+
+    <div>
+      <div class="panel why">
+        <h3>Where your gift goes</h3>
+        <ul>
+          <li><i>🧠</i><span><b>Crisis &amp; mental health</b> — same-day counseling and peer support for veterans in distress.</span></li>
+          <li><i>🏠</i><span><b>Housing stability</b> — emergency rent, move-in costs, and homelessness prevention.</span></li>
+          <li><i>💼</i><span><b>Career transition</b> — résumé help, certifications, and employer placement.</span></li>
+          <li><i>👨‍👩‍👧</i><span><b>Family &amp; caregivers</b> — respite, childcare, and support for military families.</span></li>
+        </ul>
+        <div class="quote">"When I came home I didn't know where to turn. LiveHero answered on the first call."<b>— Army veteran, New York</b></div>
+      </div>
+      <div class="tiles">
+        <div class="tile"><b>4.2k+</b><span>Veterans served</span></div>
+        <div class="tile"><b>92¢</b><span>Of every $1 to programs</span></div>
+        <div class="tile"><b>48 hrs</b><span>Avg. crisis response</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOUNDER -->
+<section class="founder" id="founder">
+  <div class="wrap fgrid2">
+    <div class="fphoto">
+      <div class="frame slides" id="slides">
+        <div class="portrait" aria-hidden="true">LG</div>
+        <img class="on" src="media/louis-gibson.jpg" style="object-position:72% 30%" alt="Louis Gibson in his wheelchair, applauded in front of the flags">
+        <img src="media/louis-gibson-3.jpg" style="object-position:55% 25%" alt="Louis Gibson with the First Lady">
+        <img src="media/louis-gibson-2.jpg" style="object-position:65% 40%" alt="Louis Gibson shaking hands with a fellow veteran at a rehabilitation center">
+        <img src="media/louis-gibson-4.jpg" style="object-position:center 35%" alt="Louis Gibson's Marine cover beside his book, Wheelchair Wisdom">
+        <img src="media/louis-gibson-5.jpg" style="object-position:center 30%" alt="Louis Gibson outside Ben's Chili Bowl in Washington">
+        <div class="scap" id="scap">Applauded on stage, flags behind him</div>
+        <button class="sbtn prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="sbtn next" type="button" aria-label="Next photo">›</button>
+        <div class="sdots" id="sdots"></div>
+        <div class="stripe"></div>
+      </div>
+      <div class="fcred"><b>Louis Gibson</b><span>Lance Corporal, U.S. Marine Corps (Ret.)</span><span>Wounded veteran · TBI &amp; spinal-cord injury</span><span>U.S. Ambassador, LiveHero</span><span>Founder, Legal Protection Agent</span></div>
+    </div>
+    <div class="fstory">
+      <div class="eyebrow">LiveHero Ambassador</div>
+      <h2>He was told to wait.<br>He chose to lead instead.</h2>
+      <blockquote>&ldquo;Fight. Recover. Because you can. And live life to the fullest.&rdquo;<cite>&mdash; Louis Gibson</cite></blockquote>
+      <p>Louis Gibson came home from active duty with a severe traumatic brain injury and a spinal-cord injury, then spent years navigating poor care and false narratives before finding the providers who helped him rebuild. That road became his mission: no one who served should face recovery, a legal fight, or a hard night by themselves.</p>
+      <p>In 2018 he founded Legal Protection Agent to connect people failed by broken systems with qualified legal help. As LiveHero’s U.S. Ambassador he carries the same promise to veterans and their families across the country, his way: helping through teaching, not telling.</p>
+      <div class="fvals">
+        <div><b>Honor</b><span>We tell the truth and keep our word to the people who kept theirs.</span></div>
+        <div><b>Service</b><span>Veterans first, paperwork second. Someone always answers the call.</span></div>
+        <div><b>Recovery</b><span>Healing is possible. We fund the care that proves it.</span></div>
+      </div>
+      <a class="btn btn-red" href="#donate">Stand with Ambassador Gibson</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- WALK A MILE -->
+<section class="walk" id="walk">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:760px">
+      <div class="eyebrow" style="color:var(--gold)">Walk a mile</div>
+      <h2>Three ways to walk a mile with a hero.</h2>
+      <p>Pick a journey. Each one is interactive, takes about a minute, and ends with something real you can do today.</p>
+    </div>
+    <div class="wtabs" role="tablist">
+      <button class="on" data-w="give"><i>01</i><b>Give</b><span>A day in recovery</span></button>
+      <button data-w="shop"><i>02</i><b>Shop</b><span>Gear that gives back</span></button>
+      <button data-w="voice"><i>03</i><b>Advocate</b><span>Your letter to Congress</span></button>
+    </div>
+
+    <!-- 01 GIVE: a day in recovery -->
+    <div class="wpane on" data-wp="give">
+      <div class="wgrid">
+        <div class="wscene">
+          <div class="wtime" id="wTime">06:00</div>
+          <h3 id="wTitle">The alarm you didn't need</h3>
+          <p id="wText">Pain woke you an hour before the alarm. The chair is three feet away and the first transfer of the day is the hardest. Nobody sees this part.</p>
+          <div class="wimpact" id="wImpact"><b>$25</b> puts a care kit at the bedside: grab bars, a transfer board, the small things that make the first move safe.</div>
+          <div class="wctl">
+            <button class="wprev" type="button" aria-label="Previous moment">←</button>
+            <div class="wdots" id="wDots"></div>
+            <button class="wnext" type="button" aria-label="Next moment">→</button>
+          </div>
+        </div>
+        <div class="wpath">
+          <div class="wprog"><i id="wFill"></i></div>
+          <ol id="wSteps"></ol>
+          <a class="btn btn-red" id="wGive" href="#donate">Fund this moment · $25</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 SHOP: gear that gives back -->
+    <div class="wpane" data-wp="shop">
+      <div class="wgrid shop">
+        <div class="products" id="products"></div>
+        <aside class="cart">
+          <h3>Your gear</h3>
+          <div class="cart-lines" id="cartLines"><p class="empty">Pick something. Every item sends a fixed amount straight to LiveHero.</p></div>
+          <div class="cart-sum"><span>Order total</span><b id="cartTotal">$0</b></div>
+          <div class="cart-give"><span>Goes to veterans</span><b id="cartGive">$0</b></div>
+          <div class="cart-bar"><i id="cartBar"></i></div>
+          <a class="btn btn-red" id="shopGo" href="https://louisgibson.us/shop" target="_blank" rel="noopener">Checkout at louisgibson.us</a>
+          <p class="fine">Merch is sold through Louis Gibson's official shop. Proceeds shown are the per-item amount pledged to LiveHero.</p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 03 ADVOCATE: letter builder -->
+    <div class="wpane" data-wp="voice">
+      <div class="wgrid voice">
+        <div class="vform">
+          <div class="field"><label for="vZip">Your ZIP code</label><input type="text" id="vZip" inputmode="numeric" maxlength="5" placeholder="20171"></div>
+          <div class="field"><label>I am a</label>
+            <div class="chips" data-group="who"><button type="button" class="on">Veteran</button><button type="button">Military family</button><button type="button">Supporter</button></div></div>
+          <div class="field"><label>What matters most to you <small>(pick up to three)</small></label>
+            <div class="chips multi" data-group="issues">
+              <button type="button" class="on">Mental-health access</button><button type="button">Housing for veterans</button><button type="button" class="on">Faster disability claims</button>
+              <button type="button">Caregiver support</button><button type="button">Veterans' preference in hiring</button><button type="button">Spinal-cord &amp; TBI care</button>
+            </div></div>
+          <div class="field"><label for="vName">Sign as</label><input type="text" id="vName" placeholder="Your name"></div>
+        </div>
+        <div class="vletter">
+          <div class="paper">
+            <div class="to" id="vTo">To the Members of Congress representing ZIP 20171</div>
+            <div id="vBody"></div>
+            <div class="sig" id="vSig">Respectfully,<br><b>A constituent</b></div>
+          </div>
+          <div class="vact"><button class="btn btn-red" type="button" id="vCopy">Copy my letter</button><a class="btn btn-outline" href="https://www.congress.gov/members/find-your-member" target="_blank" rel="noopener">Find my representative</a></div>
+          <p class="fine" id="vNote">Copy the letter, then paste it into your representative's contact form. Two minutes. It is read.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONOR WALL -->
+<section class="wall" id="wall">
+  <div class="wrap head">
+    <div><div class="eyebrow" style="color:var(--red);margin-bottom:8px">Donor Wall</div><h2>Messages from people who just gave</h2></div>
+    <span class="live"><i></i> Live · updates as gifts come in</span>
+  </div>
+  <div class="ticker"><div class="track" id="track1"></div></div>
+  <div class="ticker row2"><div class="track" id="track2"></div></div>
+</section>
+
+<!-- VIDEO -->
+<section class="block" id="watch">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Watch</div><h2>Changing direction<br>on mental health.</h2><p>The First Lady on the launch of the Campaign to Change Direction, a national effort to change the way America thinks about and responds to mental health, starting with those who served.</p></div>
+    <div class="vid">
+      <video controls preload="metadata" playsinline poster="">
+        <source src="media/change-direction-launch.m4v" type="video/mp4">
+        Your browser can't play this video. <a href="media/change-direction-launch.m4v">Download it instead.</a>
+      </video>
+      <div class="vid-bar"><span>The First Lady · Launch of the Campaign to Change Direction</span><a class="btn btn-red" href="#donate">Support the mission</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAYS TO GIVE -->
+<section class="block" id="ways" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Choose your way</div>
+      <h2>More than one way<br>to be a hero.</h2>
+      <p>Whether it's a one-time gift, a monthly commitment, or your voice in Washington, every form of support changes a veteran's story.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ico">⚡</div><h3>Give once</h3><p>Make an immediate impact. A single gift today funds counseling, meals, and emergency support this week.</p><a href="#donate">Donate now →</a></div>
+      <div class="card"><div class="ico">🔁</div><h3>Give monthly — Hero Circle</h3><p>Monthly donors are our most reliable lifeline. Predictable support lets us answer every call, every month.</p><a href="#donate">Join the Hero Circle →</a></div>
+      <div class="card"><div class="ico">🎗️</div><h3>Honor or memorial gift</h3><p>Celebrate a veteran in your life or remember one who has passed. We'll send a tribute card to the family on your behalf.</p><a href="#donate">Dedicate a gift →</a></div>
+      <div class="card"><div class="ico">🏢</div><h3>Employer matching</h3><p>Thousands of companies match employee gifts, often dollar for dollar. Check if yours does and double your impact.</p><a href="#">Find your employer →</a></div>
+      <div class="card"><div class="ico">📈</div><h3>Stock, DAF &amp; IRA gifts</h3><p>Give appreciated securities, recommend a grant from your donor-advised fund, or make a qualified charitable distribution.</p><a href="#">Learn about asset gifts →</a></div>
+      <div class="card"><div class="ico">🕊️</div><h3>Legacy giving</h3><p>Include LiveHero in your will or trust and ensure veterans are cared for long into the future.</p><a href="#">Plan a legacy gift →</a></div>
+      <div class="card"><div class="ico">🧢</div><h3>Shop to support</h3><p>Louis’s official shop carries LiveHero gear and his book. Every item sends a fixed amount to veterans.</p><a href="#walk" data-jump="shop">Gear up →</a></div>
+      <div class="card"><div class="ico">🎉</div><h3>Fundraise for heroes</h3><p>Turn a birthday, race, or milestone into support for veterans with your own peer-to-peer fundraising page.</p><a href="#">Start a fundraiser →</a></div>
+      <div class="card"><div class="ico">🤝</div><h3>Corporate partnership</h3><p>Sponsor a program, host a volunteer day, or build a cause-marketing campaign with LiveHero.</p><a href="#">Partner with us →</a></div>
+      <div class="card"><div class="ico">⏱️</div><h3>Volunteer your time</h3><p>Mentor a transitioning veteran, support an event, or lend your professional skills.</p><a href="#">Volunteer →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVOCATE -->
+<section class="block" id="advocate" style="padding-top:0">
+  <div class="wrap split">
+    <div class="advocate">
+      <div class="eyebrow">Advocate · Use your voice</div>
+      <h2>Not every gift is money.<br>Some are messages.</h2>
+      <p>Tell your member of Congress that veterans' mental health, housing, and benefits matter to you. It takes two minutes and it is heard.</p>
+      <a class="btn btn-ghost" href="#walk" data-jump="voice">Write your letter now</a>
+    </div>
+    <div class="steps">
+      <div><b>1</b><p><strong>Find your representative</strong>Enter your ZIP code and we'll identify your House and Senate members.</p></div>
+      <div><b>2</b><p><strong>Personalize our letter</strong>Start from our template on current veterans' legislation and add your own story.</p></div>
+      <div><b>3</b><p><strong>Send it — and share it</strong>Deliver your message directly, then invite friends to add their voices.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Good to know</div><h2>Giving, answered.</h2></div>
+    <div class="faq">
+      <details><summary>Is my donation tax-deductible?</summary><p>Yes. LiveHero is a registered 501(c)(19) veterans organization. Gifts are tax-deductible to the fullest extent allowed by law, and you'll receive an emailed receipt immediately.</p></details>
+      <details><summary>Can I change or cancel a monthly gift?</summary><p>Any time. Email us or use the link in your receipt to update the amount, payment method, or frequency.</p></details>
+      <details><summary>How is my gift used?</summary><p>The large majority of every dollar goes directly to veteran programs: crisis support, housing, career transition, and family services. We publish our financials annually.</p></details>
+      <details><summary>Can I give by check or wire?</summary><p>Absolutely. Make checks payable to LiveHero and mail them to our office, or contact us for wire instructions and securities transfer details.</p></details>
+      <details><summary>Will you share my information?</summary><p>Never. We do not sell, rent, or trade donor information.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>They answered the call.<br>Now it's our turn.</h2>
+    <p>No hero stands alone. Give today and prove it.</p>
+    <a class="btn" href="#donate">Donate to LiveHero</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="#" style="color:#fff;margin-bottom:12px"><span class="mark"><svg viewBox="0 0 32 36" width="22" height="25" aria-hidden="true"><path d="M16 1 L30 6 V18 C30 27 23 33 16 35 C9 33 2 27 2 18 V6 Z" fill="#fff"/><path d="M16 8 l2.4 5 5.4.6-4 3.7 1.1 5.4L16 20l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z" fill="#b3121c"/></svg></span><span>Live<b>Hero</b></span></a>
+        <p style="max-width:320px"><b style="color:#fff">No hero stands alone.</b><br>Our mission: to alleviate suffering and to enhance the life and living of those who have served in defense of national security.</p>
+      </div>
+      <div><h4>Give</h4><ul><li><a href="#donate">Donate</a></li><li><a href="#ways">Monthly giving</a></li><li><a href="#ways">Employer matching</a></li><li><a href="#ways">Legacy giving</a></li></ul></div>
+      <div><h4>Act</h4><ul><li><a href="#advocate">Advocate</a></li><li><a href="#ways">Volunteer</a></li><li><a href="#ways">Fundraise</a></li></ul></div>
+      <div><h4>About</h4><ul><li><a href="#">Our mission</a></li><li><a href="#">Financials</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+    </div>
+    <div class="fbot"><span>© 2026 LiveHero. A 501(c)(19) veterans organization.</span><span>Gifts are tax-deductible as allowed by law.</span><span>Website designed and managed by <a href="https://allitsolutions.net" style="color:#fff;font-weight:600">All IT Solutions LLC</a></span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const form=document.getElementById('donateForm');
+  const impact={25:'provides a care kit for a veteran returning home.',50:'serves a week of warm meals to a veteran in need.',100:'funds one hour of counseling for a veteran in crisis.',250:'covers emergency housing support for a veteran family.',500:'places a veteran into job-readiness training.',1000:'sponsors a hero through a full month of support.'};
+  let freq='once', amount=100, cover=true;
+  const $=s=>form.querySelector(s), $$=s=>[...form.querySelectorAll(s)];
+  const fmt=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fee=()=>Math.round((amount*0.029+0.30)*100)/100;
+
+  function render(){
+    const f=cover?fee():0, total=amount+f;
+    $('#feeAmt').textContent=fmt(f);
+    const label=freq==='monthly'?'Your monthly gift':'Your one-time gift';
+    ['','2','3'].forEach(s=>{$('#summaryLabel'+s).textContent=label;$('#total'+s).textContent=fmt(total)+(freq==='monthly'?'/mo':'');});
+    $('#submitBtn').textContent='Donate '+fmt(total)+(freq==='monthly'?' monthly':'');
+    const line=$('#impactLine');
+    if(impact[amount]) line.innerHTML='<b>'+fmt(amount).replace('.00','')+'</b> '+(freq==='monthly'?'each month ':'')+impact[amount];
+    else line.innerHTML='<b>'+fmt(amount)+'</b> '+(freq==='monthly'?'each month ':'')+'goes straight to work for veterans and their families.';
+  }
+  $$('[data-freq]').forEach(b=>b.addEventListener('click',()=>{$$('[data-freq]').forEach(x=>x.classList.remove('on'));b.classList.add('on');freq=b.dataset.freq;render();}));
+  $$('[data-amt]').forEach(b=>b.addEventListener('click',()=>{$$('[data-amt]').forEach(x=>x.classList.remove('on'));b.classList.add('on');amount=+b.dataset.amt;$('#otherAmt').value='';render();}));
+  $('#otherAmt').addEventListener('input',e=>{const v=parseFloat(e.target.value.replace(/[^0-9.]/g,''));if(v>0){amount=v;$$('[data-amt]').forEach(x=>x.classList.remove('on'));render();}});
+  $('#coverFees').addEventListener('change',e=>{cover=e.target.checked;render();});
+  $('#dedicate').addEventListener('change',e=>{$('#dedicateField').style.display=e.target.checked?'block':'none';});
+  $$('[data-pm]').forEach(b=>b.addEventListener('click',()=>{$$('[data-pm]').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#cardFields').style.display=b.dataset.pm==='card'?'block':'none';}));
+  function go(n){
+    $$('.step').forEach(s=>s.classList.toggle('on',s.dataset.step==String(n)));
+    $$('.stepper span').forEach(s=>s.classList.toggle('on',+s.dataset.s<=n));
+    document.getElementById('donate').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $$('[data-next]').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.next==='3'){const em=$('#em');if(!$('#fn').value||!em.value.includes('@')){alert('Please enter your name and a valid email so we can send your receipt.');return;}}
+    go(+b.dataset.next);
+  }));
+  let showAs='name';
+  $$('[data-show]').forEach(b=>b.addEventListener('click',()=>{$$('[data-show]').forEach(x=>x.classList.remove('on'));b.classList.add('on');showAs=b.dataset.show;}));
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=showAs==='anon'?'Anonymous':(($('#fn').value||'A friend')+' '+($('#ln').value||'').charAt(0)+'.').trim();
+    addDonor({name,city:$('#city').value||'',amt:amount,freq,msg:$('#msg').value.trim(),fresh:true});
+    go(4);
+  });
+  render();
+
+  /* ---------- donor wall ---------- */
+  const donors=[
+    {name:'Maria G.',city:'Brooklyn, NY',amt:100,freq:'monthly',msg:'For my brother who served two tours. You are not alone.'},
+    {name:'Anonymous',city:'',amt:500,msg:'Thank you for answering the call when no one else did.'},
+    {name:'David & Priya R.',city:'Jersey City, NJ',amt:250,msg:'In memory of Sgt. James Carter. Never forgotten.'},
+    {name:'Anonymous',city:'Queens, NY',amt:50,freq:'monthly',msg:'Small gift, big respect. Keep going.'},
+    {name:'Tom H.',city:'Staten Island, NY',amt:1000,msg:'Navy vet here. LiveHero helped a buddy of mine find housing in a week. Paying it forward.'},
+    {name:'Aisha K.',city:'Hoboken, NJ',amt:25,msg:'For the families who wait at home. 🇺🇸'},
+    {name:'Anonymous',city:'',amt:100,msg:'My father never talked about it. This is for him.'},
+    {name:'The Chen Family',city:'Manhattan, NY',amt:250,freq:'monthly',msg:'Hero Circle members since 2024. Proud to stand with you.'},
+    {name:'Robert L.',city:'Long Island, NY',amt:75,msg:'Semper Fi. Thank you for taking care of our own.'},
+    {name:'Anonymous',city:'Newark, NJ',amt:500,msg:'In honor of every name on the wall downtown.'},
+    {name:'Grace O.',city:'Bronx, NY',amt:50,msg:'A counselor picked up on the first ring for my husband. Grateful beyond words.'},
+    {name:'Anonymous',city:'',amt:200,msg:'Happy Veterans Day to all who served. ❤️'},
+  ];
+  const ini=n=>n==='Anonymous'?'?':n.split(/\s+/).map(w=>w[0]).join('').replace(/[^A-Z&]/gi,'').slice(0,2).toUpperCase();
+  function card(d){
+    const anon=d.name==='Anonymous';
+    return `<div class="dcard${d.fresh?' new':''}"><div class="top"><div class="av${anon?' anon':''}">${ini(d.name)}</div><div class="who"><b>${d.name}</b><span>${d.city||(anon?'Location hidden':'')}${d.freq==='monthly'?' · Monthly donor':''}</span></div><div class="amt">$${d.amt.toLocaleString()}${d.freq==='monthly'?'/mo':''}</div></div>${d.msg?`<p>“${d.msg}”</p>`:''}</div>`;
+  }
+  function build(){
+    const a=donors.slice(0,6), b=donors.slice(6);
+    document.getElementById('track1').innerHTML=[...a,...a].map(card).join('');
+    document.getElementById('track2').innerHTML=[...b,...b].map(card).join('');
+  }
+  function addDonor(d){donors.unshift(d);build();}
+  build();
+
+
+  /* ---------- walk a mile ---------- */
+  const W=document.getElementById('walk');
+  W.querySelectorAll('[data-w]').forEach(b=>b.addEventListener('click',()=>{
+    W.querySelectorAll('[data-w]').forEach(x=>x.classList.toggle('on',x===b));
+    W.querySelectorAll('.wpane').forEach(p=>p.classList.toggle('on',p.dataset.wp===b.dataset.w));
+  }));
+
+  // 01 give — a day in recovery
+  const day=[
+    {t:'06:00',h:"The alarm you didn't need",p:'Pain woke you an hour before the alarm. The chair is three feet away and the first transfer of the day is the hardest. Nobody sees this part.',amt:25,i:'puts a care kit at the bedside: grab bars, a transfer board, the small things that make the first move safe.'},
+    {t:'09:10',h:'On hold. Again.',p:'Forty minutes into a claims call and the music loops for the sixth time. The letter says "additional evidence required" but not what evidence.',amt:100,i:'funds an hour with a benefits navigator who reads the letter, calls the right desk, and stays on the line.'},
+    {t:'12:30',h:'Lunch is whatever is left',p:'Groceries are a trip, and the trip is a project. Today it is crackers and the last of the coffee.',amt:50,i:'delivers a week of warm meals so recovery runs on food, not willpower.'},
+    {t:'15:00',h:'The good hour',p:'Physical therapy. It hurts and it works. Last month, two feet of standing. Today, four. The therapist says "because you can."',amt:250,i:'covers a month of rehab sessions insurance will not, the hours where strength actually comes back.'},
+    {t:'21:40',h:'The hard hour',p:'The house is quiet and the mind is not. This is the hour that takes people. Tonight someone picks up on the first ring.',amt:100,i:'keeps a trained peer on the line tonight. Same-day crisis support, no hold music, no voicemail.'},
+    {t:'07:00',h:'Tomorrow',p:'The alarm goes off and you are already up. Not because the pain is gone, but because someone is in it with you. That is what LiveHero is.',amt:500,i:'sponsors a hero through a full month of care, housing help, and job placement. No hero stands alone.'}
+  ];
+  let wi=0;
+  const wSteps=document.getElementById('wSteps'), wDots=document.getElementById('wDots');
+  wSteps.innerHTML=day.map((d,k)=>`<li data-k="${k}"><b>${d.t}</b><span>${d.h}</span></li>`).join('');
+  wDots.innerHTML=day.map(()=>'<i></i>').join('');
+  function wRender(){
+    const d=day[wi];
+    document.getElementById('wTime').textContent=d.t;
+    document.getElementById('wTitle').textContent=d.h;
+    document.getElementById('wText').textContent=d.p;
+    document.getElementById('wImpact').innerHTML=`<b>$${d.amt}</b> ${d.i}`;
+    document.getElementById('wGive').textContent=`Fund this moment · $${d.amt}`;
+    document.getElementById('wGive').dataset.amt=d.amt;
+    document.getElementById('wFill').style.width=((wi+1)/day.length*100)+'%';
+    wSteps.querySelectorAll('li').forEach((li,k)=>{li.classList.toggle('on',k===wi);li.classList.toggle('done',k<wi);});
+    wDots.querySelectorAll('i').forEach((i,k)=>i.classList.toggle('on',k===wi));
+  }
+  W.querySelector('.wnext').addEventListener('click',()=>{wi=(wi+1)%day.length;wRender();});
+  W.querySelector('.wprev').addEventListener('click',()=>{wi=(wi-1+day.length)%day.length;wRender();});
+  wSteps.addEventListener('click',e=>{const li=e.target.closest('li');if(li){wi=+li.dataset.k;wRender();}});
+  document.getElementById('wGive').addEventListener('click',()=>{
+    const a=+document.getElementById('wGive').dataset.amt;
+    const btn=form.querySelector(`[data-amt="${a}"]`);
+    if(btn){btn.click();}else{$('#otherAmt').value=a;$('#otherAmt').dispatchEvent(new Event('input'));}
+    go(1);
+  });
+  wRender();
+  document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',()=>{W.querySelector(`[data-w="${a.dataset.jump}"]`).click();}));
+
+  // 02 shop — gear that gives back
+  const gear=[
+    {n:'No Hero Stands Alone tee',d:'Heavyweight cotton, navy with scarlet print.',price:32,give:12,bg:'linear-gradient(160deg,#0a1a2f,#13294a)',art:'No hero<br>stands alone'},
+    {n:'Fight. Recover. cap',d:'Louis’s motto. Structured, embroidered, one size.',price:28,give:10,bg:'linear-gradient(160deg,#b3121c,#8f0d15)',art:'Fight.<br>Recover.<small>Because you can</small>'},
+    {n:'LiveHero hoodie',d:'Fleece-lined, shield mark on the chest, flag on the sleeve.',price:58,give:20,bg:'linear-gradient(160deg,#d4a017,#b8860b)',art:'Live<br>Hero<small>est. for those who served</small>'},
+    {n:'Wheelchair Wisdom (signed)',d:'Louis’s book on awakening your spirit through adversity.',price:24,give:24,bg:'linear-gradient(160deg,#1d3f78,#0a1a2f)',art:'Wheelchair<br>Wisdom<small>signed copy</small>'}
+  ];
+  const qty=gear.map(()=>0);
+  const P=document.getElementById('products');
+  P.innerHTML=gear.map((g,k)=>`<div class="prod"><div class="art" style="background:${g.bg}">${g.art}</div><div class="pb"><b>${g.n}</b><span>${g.d}</span><div class="pr"><div><b>$${g.price}</b> <em>$${g.give} to LiveHero</em></div><div class="qty"><button type="button" data-q="-1" data-k="${k}">−</button><output id="q${k}">0</output><button type="button" data-q="1" data-k="${k}">+</button></div></div></div></div>`).join('');
+  P.addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b)return;const k=+b.dataset.k;qty[k]=Math.max(0,qty[k]+ +b.dataset.q);document.getElementById('q'+k).textContent=qty[k];cartRender();});
+  function cartRender(){
+    let total=0,give=0,lines=[];
+    gear.forEach((g,k)=>{if(qty[k]){total+=g.price*qty[k];give+=g.give*qty[k];lines.push(`<div><span>${qty[k]} × ${g.n}</span><b>$${g.price*qty[k]}</b></div>`);}});
+    document.getElementById('cartLines').innerHTML=lines.length?lines.join(''):'<p class="empty">Pick something. Every item sends a fixed amount straight to LiveHero.</p>';
+    document.getElementById('cartTotal').textContent='$'+total;
+    document.getElementById('cartGive').textContent='$'+give;
+    document.getElementById('cartBar').style.width=Math.min(100,give/100*100)+'%';
+    document.getElementById('shopGo').textContent=total?`Checkout $${total} at louisgibson.us`:'Checkout at louisgibson.us';
+  }
+
+  // 03 advocate — letter builder
+  const V=W.querySelector('[data-wp="voice"]');
+  const issueText={
+    'Mental-health access':'fund same-day mental-health care for veterans, with no waitlist for anyone in crisis',
+    'Housing for veterans':'protect and expand housing assistance so no one who served sleeps in a car or on a couch',
+    'Faster disability claims':'set and enforce real deadlines on disability claims, with a human point of contact for every file',
+    'Caregiver support':'extend caregiver stipends and respite care to the families carrying the load at home',
+    "Veterans' preference in hiring":"defend veterans' preference in public hiring wherever it is under threat",
+    'Spinal-cord & TBI care':'guarantee specialist spinal-cord and traumatic-brain-injury care close to where veterans actually live'
+  };
+  V.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    if(g.classList.contains('multi')){const on=g.querySelectorAll('.on').length;if(!b.classList.contains('on')&&on>=3)return;b.classList.toggle('on');}
+    else g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    vRender();
+  }));
+  ['vZip','vName'].forEach(id=>document.getElementById(id).addEventListener('input',vRender));
+  function vRender(){
+    const zip=document.getElementById('vZip').value.trim()||'20171';
+    const who=V.querySelector('[data-group="who"] .on').textContent;
+    const issues=[...V.querySelectorAll('[data-group="issues"] .on')].map(b=>b.textContent.replace('&amp;','&'));
+    const name=document.getElementById('vName').value.trim()||'A constituent';
+    const intro={'Veteran':'I served in the United States Armed Forces and I am writing to you as a veteran and a constituent.','Military family':'I am writing as a military family member and a constituent. I see every day what service costs the people who come home.','Supporter':'I am writing as a constituent who believes the people who served this country should never have to face what comes after alone.'}[who];
+    const list=issues.length?issues.map(i=>issueText[i]).map((t,k)=>`${k+1}. ${t[0].toUpperCase()+t.slice(1)}.`).join('<br>'):'(choose the issues that matter to you)';
+    document.getElementById('vTo').textContent=`To the Members of Congress representing ZIP ${zip}`;
+    document.getElementById('vBody').innerHTML=`<p>${intro}</p><p>Veterans in our district are waiting too long for care, for answers, and for the benefits they earned. I am asking you to act on the following:</p><p>${list}</p><p>Organizations like LiveHero are filling the gap with private donations. They should not have to. I will be watching how you vote, and I will be sharing this letter with other constituents.</p>`;
+    document.getElementById('vSig').innerHTML=`Respectfully,<br><b>${name}</b><br><span style="font-size:13px;color:var(--muted)">${who} · ZIP ${zip}</span>`;
+  }
+  document.getElementById('vCopy').addEventListener('click',async()=>{
+    const paper=V.querySelector('.paper').innerText;
+    try{await navigator.clipboard.writeText(paper);document.getElementById('vNote').textContent='Copied. Paste it into your representative’s contact form, or email it. Thank you for using your voice.';}catch(e){document.getElementById('vNote').textContent='Select the letter text and copy it, then paste it into your representative’s contact form.';}
+  });
+  vRender();
+
+  /* ---------- founder slideshow ---------- */
+  (function(){
+    const box=document.getElementById('slides'); if(!box) return;
+    const imgs=[...box.querySelectorAll('img')], caps=['Applauded on stage, flags behind him','With the First Lady, a day he still talks about','Brothers in recovery: no hero stands alone','Marine cover, and the book he wrote from the chair','Out in Washington, living life to the fullest'];
+    const dots=document.getElementById('sdots'); dots.innerHTML=imgs.map(()=>'<i></i>').join('');
+    let i=0,t;
+    function show(n){
+      i=(n+imgs.length)%imgs.length;
+      imgs.forEach((im,k)=>im.classList.toggle('on',k===i));
+      dots.querySelectorAll('i').forEach((d,k)=>{d.classList.toggle('on',k===i);d.classList.toggle('done',k<i);});
+      document.getElementById('scap').textContent=caps[i]||'';
+      clearTimeout(t); t=setTimeout(()=>show(i+1),6000);
+    }
+    box.querySelector('.prev').addEventListener('click',()=>show(i-1));
+    box.querySelector('.next').addEventListener('click',()=>show(i+1));
+    dots.addEventListener('click',e=>{const k=[...dots.children].indexOf(e.target);if(k>=0)show(k);});
+    box.addEventListener('mouseenter',()=>clearTimeout(t));
+    box.addEventListener('mouseleave',()=>{t=setTimeout(()=>show(i+1),3000);});
+    show(0);
+  })();
+
+  /* ---------- scroll reveal ---------- */
+  document.querySelectorAll('.card,.sec-head,.advocate,.steps,details,.tile').forEach(el=>el.classList.add('reveal'));
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
