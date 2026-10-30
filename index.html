@@ -33,7 +33,7 @@
   .btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
 
   /* ---------- header ---------- */
-  header{position:sticky;top:0;z-index:50;background:rgba(11,31,58,.92);backdrop-filter:blur(10px);color:#fff}
+  header{position:sticky;top:0;z-index:50;background:var(--header,rgba(11,31,58,.92));backdrop-filter:blur(10px);color:#fff}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:21px;text-decoration:none}
   .logo .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(160deg,var(--red),var(--red-dark));display:grid;place-items:center;box-shadow:0 4px 12px rgba(179,18,28,.4)}
@@ -46,8 +46,7 @@
 
   /* ---------- hero with WTC skyline ---------- */
   .hero{position:relative;color:#fff;overflow:hidden;min-height:620px;display:flex;align-items:center;
-    background:radial-gradient(900px 420px at 78% -5%,rgba(179,18,28,.55) 0%,transparent 60%),radial-gradient(1200px 500px at 30% 0%,#1d3f78 0%,transparent 60%),
-               linear-gradient(180deg,#06111f 0%,#13294a 55%,#2b5fa6 100%)}
+    background:var(--hero-bg,radial-gradient(900px 420px at 78% -5%,rgba(179,18,28,.55) 0%,transparent 60%),radial-gradient(1200px 500px at 30% 0%,#1d3f78 0%,transparent 60%),linear-gradient(180deg,#06111f 0%,#13294a 55%,#2b5fa6 100%))}
   .hero svg.sky{position:absolute;inset:auto 0 0 0;width:100%;height:auto;display:block;pointer-events:none}
   .hero .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 65% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1.5px 1.5px at 80% 40%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 40% 10%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 90% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 10% 55%,rgba(255,255,255,.4),transparent);opacity:.8}
   .hero .wrap{position:relative;z-index:2;padding:80px 0 230px}
@@ -76,7 +75,7 @@
   .amounts button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:16px 10px;font-size:20px;font-weight:800;cursor:pointer;color:var(--navy);transition:.15s}
   .amounts button small{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.6px}
   .amounts button:hover{border-color:var(--navy)}
-  .amounts button.on{border-color:var(--red);background:#fff4f4;color:var(--red-dark)}
+  .amounts button.on{border-color:var(--red);background:var(--tint,#fff4f4);color:var(--red-dark)}
   .other{display:flex;align-items:center;border:2px solid var(--line);border-radius:12px;padding:0 14px;height:58px;margin-bottom:18px;transition:.15s}
   .other:focus-within{border-color:var(--red)}
   .other span{font-size:20px;font-weight:800;color:var(--muted);margin-right:6px}
@@ -181,7 +180,7 @@
   .hero .sky{animation:drift 14s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
   .panel{box-shadow:0 30px 60px -20px rgba(11,31,58,.35),0 0 0 1px rgba(255,255,255,.6) inset}
-  .btn-red{background:linear-gradient(135deg,#e62e34,#c4191f)}
+  .btn-red{background:linear-gradient(135deg,var(--cta-1,#e62e34),var(--cta-2,#c4191f))}
   .btn-red::after{content:"→";transition:transform .2s}
   .btn-red:hover::after{transform:translateX(3px)}
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -189,7 +188,7 @@
   .card{position:relative;overflow:hidden}
   .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:.3s}
   .card:hover::before{transform:scaleX(1)}
-  .tile b{background:linear-gradient(135deg,var(--navy),#2a5494);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tile b{background:linear-gradient(135deg,var(--navy),var(--navy-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* ---------- donor wall ticker ---------- */
   .wall{padding:56px 0 8px;overflow:hidden}
@@ -367,6 +366,60 @@
   .sdots i.on::after{animation:sfill 6s linear forwards}
   .sdots i.done::after{transform:scaleX(1)}
   @keyframes sfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* ---------- color schemes ---------- */
+  [data-theme="green"]{
+    --navy:#163b2c; --navy-2:#1f5a42; --ink:#172420; --muted:#5b6a63; --line:#dfe6e1; --bg:#ffffff; --card:#ffffff;
+    --red:#1f6b45; --red-dark:#14532d; --gold:#c9a227; --cream:#ffffff; --tint:#eef6f1;
+    --cta-1:#2a7f53; --cta-2:#14532d;
+    --header:rgba(16,45,33,.94);
+    --hero-bg:radial-gradient(900px 420px at 78% -5%,rgba(201,162,39,.35) 0%,transparent 60%),radial-gradient(1200px 500px at 30% 0%,#1f5a42 0%,transparent 60%),linear-gradient(180deg,#0b1f16 0%,#163b2c 55%,#2f7a57 100%);
+  }
+  [data-theme="green"] .hero .sky{filter:hue-rotate(-85deg) saturate(.75) brightness(.95)}
+  [data-theme="green"] .hero h1 .brand b{background:linear-gradient(90deg,#e6c75a,#c9a227 50%,#f1dc8a)}
+  [data-theme="green"] .final{background:linear-gradient(135deg,#1f6b45,#14532d)}
+  [data-theme="green"] .impact-line{background:#eef6f1}
+  [data-theme="green"] .seg{background:#edf2ee}
+  [data-theme="green"] .wimpact{border-left-color:var(--gold)}
+  [data-theme="green"] .dcard .amt{background:#eef6f1}
+  [data-theme="green"] .founder{background:linear-gradient(180deg,#f3f7f4 0%,#fff 100%)}
+
+  [data-theme="green-scarlet"]{
+    --navy:#163b2c; --navy-2:#1f5a42; --ink:#172420; --muted:#5b6a63; --line:#dfe6e1; --bg:#ffffff; --card:#ffffff;
+    --red:#b3121c; --red-dark:#8f0d15; --gold:#c9a227; --cream:#ffffff; --tint:#fff4f4;
+    --cta-1:#e62e34; --cta-2:#c4191f;
+    --header:rgba(16,45,33,.94);
+    --hero-bg:radial-gradient(900px 420px at 78% -5%,rgba(179,18,28,.45) 0%,transparent 60%),radial-gradient(1200px 500px at 30% 0%,#1f5a42 0%,transparent 60%),linear-gradient(180deg,#0b1f16 0%,#163b2c 55%,#2f7a57 100%);
+  }
+  [data-theme="green-scarlet"] .hero .sky{filter:hue-rotate(-85deg) saturate(.75) brightness(.95)}
+  [data-theme="green-scarlet"] .impact-line{background:#eef6f1}
+  [data-theme="green-scarlet"] .seg{background:#edf2ee}
+  [data-theme="green-scarlet"] .founder{background:linear-gradient(180deg,#f3f7f4 0%,#fff 100%)}
+
+  [data-theme="white-navy"]{
+    --bg:#ffffff; --cream:#ffffff; --line:#e6e8ec; --tint:#fff4f4;
+    --header:rgba(10,26,47,.94);
+  }
+  [data-theme="white-navy"] .founder{background:linear-gradient(180deg,#f4f6f9 0%,#fff 100%)}
+
+  /* switcher */
+  .themer{position:fixed;left:16px;bottom:16px;z-index:90;background:#fff;color:#172420;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.25);padding:10px 12px;font-size:12px;display:flex;align-items:center;gap:10px;border:1px solid rgba(0,0,0,.08)}
+  .themer b{font-family:var(--display);text-transform:uppercase;letter-spacing:1px;font-size:13px;margin-right:2px}
+  .themer button{display:flex;align-items:center;gap:6px;border:1.5px solid transparent;background:#f4f4f4;border-radius:999px;padding:5px 10px 5px 6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;color:#333}
+  .themer button i{width:16px;height:16px;border-radius:50%;display:inline-block;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%);border:1px solid rgba(0,0,0,.15)}
+  .themer button.on{border-color:#172420;background:#fff}
+  @media (max-width:640px){.themer{left:8px;right:8px;bottom:8px;flex-wrap:wrap;justify-content:center}}
+
+  /* ---------- who we are ---------- */
+  .purpose{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+  @media (max-width:900px){.purpose{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.purpose{grid-template-columns:1fr}}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+  .pcard i{font-style:normal;font-family:var(--display);font-size:44px;font-weight:900;color:var(--gold);opacity:.35;position:absolute;right:14px;top:6px;line-height:1}
+  .pcard h3{font-family:var(--display);font-size:24px;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:8px}
+  .pcard p{font-size:14px;color:var(--muted)}
+  .proverb{background:var(--navy);color:#fff;border-radius:16px;padding:28px 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;line-height:1.4;margin-bottom:16px;border-left:6px solid var(--gold)}
+  .proverb span{display:block;font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:1.5px;font-size:13px;color:var(--gold);margin-top:10px}
 </style>
 </head>
 <body>
@@ -375,6 +428,7 @@
   <div class="wrap nav">
     <a class="logo" href="#"><span class="mark"><svg viewBox="0 0 32 36" width="22" height="25" aria-hidden="true"><path d="M16 1 L30 6 V18 C30 27 23 33 16 35 C9 33 2 27 2 18 V6 Z" fill="#fff"/><path d="M16 8 l2.4 5 5.4.6-4 3.7 1.1 5.4L16 20l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z" fill="#b3121c"/></svg></span><span>Live<b>Hero</b></span></a>
     <ul>
+      <li><a href="#who">Who We Are</a></li>
       <li><a href="#founder">Our Ambassador</a></li>
       <li><a href="#">Programs</a></li>
       <li><a href="#ways">Ways to Give</a></li>
@@ -881,6 +935,23 @@
   </div>
 </section>
 
+
+<!-- WHO WE ARE -->
+<section class="block" id="who" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Who we are</div><h2>To restore and save<br>the life and livelihoods.</h2>
+      <p>Live Hero, Inc. is a national veterans&rsquo; service organization. Our mission is to alleviate suffering and to enhance the life and living of those who have served in defense of national security, and to support the veterans injured while defending our freedoms.</p></div>
+    <div class="purpose">
+      <div class="pcard"><i>01</i><h3>Comradeship</h3><p>Foster comradeship among veterans, so no one who served walks the road home alone.</p></div>
+      <div class="pcard"><i>02</i><h3>Honor the fallen</h3><p>Honor the memory of deceased veterans and comfort the families they left behind.</p></div>
+      <div class="pcard"><i>03</i><h3>Patriotism</h3><p>Encourage patriotism and the spirit of service in our communities and the next generation.</p></div>
+      <div class="pcard"><i>04</i><h3>Aid in need</h3><p>Aid hospitalized, disabled, and needy veterans and their dependents with care, shelter, food, health, education, and financial help.</p></div>
+    </div>
+    <div class="proverb">&ldquo;Whoever saves a single life is considered to have saved the whole world.&rdquo;<span>Jewish proverb &middot; the line LiveHero was founded on</span></div>
+    <p class="fine" style="color:var(--muted);max-width:760px">Live Hero, Inc. also works for the social welfare of veterans and their dependents, widows, and orphans; provides entertainment and care for hospitalized veterans; sponsors memorial, charitable, educational, and patriotic programs; and offers social and recreational activities for members.</p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="block" style="padding-top:0">
   <div class="wrap">
@@ -1116,6 +1187,24 @@
   document.querySelectorAll('.card,.sec-head,.advocate,.steps,details,.tile').forEach(el=>el.classList.add('reveal'));
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+
+<div class="themer" id="themer"><b>Color scheme</b>
+  <button data-t="default" style="--a:#0a1a2f;--b:#b3121c">Navy &amp; Scarlet</button>
+  <button data-t="green" style="--a:#ffffff;--b:#163b2c">White &amp; Hunter Green</button>
+  <button data-t="green-scarlet" style="--a:#163b2c;--b:#b3121c">Hunter Green &amp; Scarlet</button>
+  <button data-t="white-navy" style="--a:#ffffff;--b:#0a1a2f">White &amp; Navy</button>
+</div>
+<script>
+(function(){
+  const q=new URLSearchParams(location.search).get('theme');
+  let t=q||'default'; try{ if(!q) t=localStorage.getItem('lh-theme')||'default'; }catch(e){}
+  function apply(n){ t=n; if(n==='default') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme',n);
+    document.querySelectorAll('#themer button').forEach(b=>b.classList.toggle('on',b.dataset.t===n)); try{localStorage.setItem('lh-theme',n);}catch(e){}
+    const u=new URL(location.href); if(n==='default') u.searchParams.delete('theme'); else u.searchParams.set('theme',n); history.replaceState(null,'',u); }
+  document.querySelectorAll('#themer button').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.t)));
+  apply(t);
 })();
 </script>
 </body>
