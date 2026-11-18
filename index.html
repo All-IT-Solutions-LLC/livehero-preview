@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var q=null,t=null;try{q=new URLSearchParams(location.search).get('theme');t=q||localStorage.getItem('lh-theme-v2');}catch(e){}t=t||'light';if(t!=='default')document.documentElement.setAttribute('data-theme',t);})();</script>
 <title>Ways to Give | LiveHero</title>
 <meta name="description" content="Support veterans through LiveHero. Give once, give monthly, honor a hero, or match your gift through your employer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -420,6 +421,86 @@
   .pcard p{font-size:14px;color:var(--muted)}
   .proverb{background:var(--navy);color:#fff;border-radius:16px;padding:28px 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;line-height:1.4;margin-bottom:16px;border-left:6px solid var(--gold)}
   .proverb span{display:block;font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:1.5px;font-size:13px;color:var(--gold);margin-top:10px}
+
+  /* ---------- White, Hunter Green & Red (client pick, default) ---------- */
+  [data-theme="light"]{
+    --navy:#163b2c; --navy-2:#1f5a42; --ink:#172420; --muted:#4f6159; --line:#dde6e0; --bg:#ffffff; --card:#ffffff;
+    --red:#b3121c; --red-dark:#8f0d15; --gold:#c9a227; --cream:#ffffff; --tint:#fff4f4;
+    --cta-1:#e62e34; --cta-2:#c4191f;
+    --header:rgba(255,255,255,.96);
+    --hero-bg:linear-gradient(180deg,#ffffff 0%,#f5faf7 55%,#e4f0e9 100%);
+  }
+  [data-theme="light"] header{color:var(--navy);border-bottom:1px solid var(--line);box-shadow:0 2px 14px rgba(22,59,44,.06)}
+  [data-theme="light"] .nav ul a:hover{color:var(--red)}
+  [data-theme="light"] .logo span b{color:var(--red)}
+  [data-theme="light"] .hero{color:var(--navy)}
+  [data-theme="light"] .hero .stars{display:none}
+  [data-theme="light"] .hero .sky{filter:hue-rotate(-85deg) saturate(.8) brightness(1.05)}
+  [data-theme="light"] .hero .eyebrow{color:var(--red)}
+  [data-theme="light"] .hero .eyebrow::before{background:var(--red)}
+  [data-theme="light"] .hero h1 .brand{color:var(--navy)}
+  [data-theme="light"] .hero h1 .brand b{background-image:linear-gradient(90deg,#d0242c,#b3121c 55%,#e2454c)}
+  [data-theme="light"] .hero p.lede{color:var(--muted)}
+  [data-theme="light"] .hero .trust{color:var(--muted)}
+  [data-theme="light"] .hero .trust b{color:var(--navy)}
+  [data-theme="light"] .hero .trust > div{background:#fff;border-color:var(--line);box-shadow:0 8px 20px -10px rgba(22,59,44,.25)}
+  [data-theme="light"] .hero .caption{color:rgba(22,59,44,.6)}
+  [data-theme="light"] .bigtrack span{-webkit-text-stroke:1.5px rgba(22,59,44,.10)}
+  [data-theme="light"] .bigtrack span i{color:rgba(179,18,28,.18)}
+  [data-theme="light"] .btn-ghost{background:#fff;color:var(--navy);border-color:var(--navy);backdrop-filter:none}
+  [data-theme="light"] .btn-ghost:hover{background:var(--navy);color:#fff}
+  [data-theme="light"] .seg{background:#edf3ef}
+  [data-theme="light"] .impact-line{background:#f1f7f3}
+  [data-theme="light"] .why{background:#fff;color:var(--ink);border:1px solid var(--line);border-top:5px solid var(--navy)}
+  [data-theme="light"] .why h3{color:var(--navy)}
+  [data-theme="light"] .why li{color:var(--muted)}
+  [data-theme="light"] .why li b{color:var(--navy)}
+  [data-theme="light"] .why li i{background:#eef6f1}
+  [data-theme="light"] .why .quote{border-top-color:var(--line);color:var(--ink)}
+  [data-theme="light"] .why .quote b{color:var(--red)}
+  [data-theme="light"] .founder{background:linear-gradient(180deg,#f5faf7 0%,#fff 100%)}
+  [data-theme="light"] .walk{background:#f5faf7;color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  [data-theme="light"] .walk::before{opacity:.25}
+  [data-theme="light"] .walk .sec-head h2{color:var(--navy)}
+  [data-theme="light"] .walk .sec-head p{color:var(--muted)}
+  [data-theme="light"] .walk .sec-head .eyebrow{color:var(--red)!important}
+  [data-theme="light"] .walk .sec-head .eyebrow::before{background:var(--red)}
+  [data-theme="light"] .wtabs button{background:#fff;border-color:var(--line);color:var(--navy)}
+  [data-theme="light"] .wtabs button span{color:var(--muted)}
+  [data-theme="light"] .wtabs button i{color:var(--navy);opacity:.45}
+  [data-theme="light"] .wtabs button:hover{background:#eef6f1}
+  [data-theme="light"] .wtabs button.on{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:0 16px 36px -18px rgba(22,59,44,.45)}
+  [data-theme="light"] .wtabs button.on i{color:var(--red);opacity:1}
+  [data-theme="light"] .wscene{background:#fff;border:1px solid var(--line)}
+  [data-theme="light"] .wimpact{background:#fff;color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--red)}
+  [data-theme="light"] .wimpact b{color:var(--red)}
+  [data-theme="light"] .wpath{background:#fff;border-color:var(--line)}
+  [data-theme="light"] .wprog{background:var(--line)}
+  [data-theme="light"] .wpath li{color:var(--muted)}
+  [data-theme="light"] .wpath li b{color:var(--navy)}
+  [data-theme="light"] .wpath li:hover{background:#eef6f1;color:var(--navy)}
+  [data-theme="light"] .wpath li.on{background:#eef6f1;color:var(--navy)}
+  [data-theme="light"] .wpath li.on b{color:var(--red)}
+  [data-theme="light"] .wpath li.done{color:var(--ink)}
+  [data-theme="light"] .prod,[data-theme="light"] .cart,[data-theme="light"] .vform{border:1px solid var(--line)}
+  [data-theme="light"] .vact .btn-outline{color:var(--navy);border-color:var(--navy)}
+  [data-theme="light"] .walk .fine{color:var(--muted)}
+  [data-theme="light"] .dcard .av:not(.anon){background:linear-gradient(135deg,var(--navy),var(--navy-2))}
+  [data-theme="light"] .vid{background:#fff;border:1px solid var(--line)}
+  [data-theme="light"] .vid-bar{color:var(--navy)}
+  [data-theme="light"] .advocate{background:#f5faf7;color:var(--ink);border:1px solid var(--line)}
+  [data-theme="light"] .advocate::after{background:rgba(179,18,28,.06)}
+  [data-theme="light"] .advocate h2{color:var(--navy)}
+  [data-theme="light"] .advocate p{color:var(--muted)}
+  [data-theme="light"] .advocate .eyebrow{color:var(--red)}
+  [data-theme="light"] .advocate .eyebrow::before{background:var(--red)}
+  [data-theme="light"] .proverb{background:#fff;color:var(--navy);border:1px solid var(--line);border-left:6px solid var(--red)}
+  [data-theme="light"] .proverb span{color:var(--red)}
+  [data-theme="light"] footer{background:#f5faf7;color:var(--muted);border-top:5px solid var(--navy)}
+  [data-theme="light"] footer h4{color:var(--navy)}
+  [data-theme="light"] footer a:hover{color:var(--red)}
+  [data-theme="light"] footer .logo,[data-theme="light"] footer p b,[data-theme="light"] footer .fbot a{color:var(--navy)!important}
+  [data-theme="light"] .fbot{border-top-color:var(--line)}
 </style>
 </head>
 <body>
@@ -448,13 +529,13 @@
   <div class="wrap">
     <div class="eyebrow">Ways to Give · A national veterans foundation</div>
     <h1>No hero<br>stands alone.<span class="brand">Live<b>Hero</b></span></h1>
-    <p class="lede">Led by a wounded Marine who lived the broken system and refused to leave anyone else in it. Your gift puts a hero back on their feet: care, a roof, a job, and someone who answers the call.</p>
+    <p class="lede">LiveHero is a national veterans’ service organization working to restore the lives and livelihoods of those who served. Your gift puts a hero back on their feet: care, a roof, a job, and someone who answers the call.</p>
     <div class="cta">
       <a class="btn btn-red" href="#donate">Give now</a>
       <a class="btn btn-ghost" href="#watch">▶ Watch the story</a>
     </div>
     <div class="trust">
-      <div><b>Marine</b>ambassador-led</div>
+      <div><b>National</b>veterans’ service organization</div>
       <div><b>501(c)(19)</b>veterans organization</div>
       <div><b>24/7</b>someone answers the call</div>
     </div>
@@ -755,6 +836,22 @@
 </section>
 
 
+<!-- WHO WE ARE -->
+<section class="block" id="who">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Who we are</div><h2>To restore and save<br>the life and livelihoods.</h2>
+      <p>Live Hero, Inc. is a national veterans&rsquo; service organization. Our mission is to alleviate suffering and to enhance the life and living of those who have served in defense of national security, and to support the veterans injured while defending our freedoms.</p></div>
+    <div class="purpose">
+      <div class="pcard"><i>01</i><h3>Comradeship</h3><p>Foster comradeship among veterans, so no one who served walks the road home alone.</p></div>
+      <div class="pcard"><i>02</i><h3>Honor the fallen</h3><p>Honor the memory of deceased veterans and comfort the families they left behind.</p></div>
+      <div class="pcard"><i>03</i><h3>Patriotism</h3><p>Encourage patriotism and the spirit of service in our communities and the next generation.</p></div>
+      <div class="pcard"><i>04</i><h3>Aid in need</h3><p>Aid hospitalized, disabled, and needy veterans and their dependents with care, shelter, food, health, education, and financial help.</p></div>
+    </div>
+    <div class="proverb">&ldquo;Whoever saves a single life is considered to have saved the whole world.&rdquo;<span>Jewish proverb &middot; the line LiveHero was founded on</span></div>
+    <p class="fine" style="color:var(--muted);max-width:760px">Live Hero, Inc. also works for the social welfare of veterans and their dependents, widows, and orphans; provides entertainment and care for hospitalized veterans; sponsors memorial, charitable, educational, and patriotic programs; and offers social and recreational activities for members.</p>
+  </div>
+</section>
+
 <!-- FOUNDER -->
 <section class="founder" id="founder">
   <div class="wrap fgrid2">
@@ -775,17 +872,17 @@
       <div class="fcred"><b>Louis Gibson</b><span>Lance Corporal, U.S. Marine Corps (Ret.)</span><span>Wounded veteran · TBI &amp; spinal-cord injury</span><span>U.S. Ambassador, LiveHero</span><span>Founder, Legal Protection Agent</span></div>
     </div>
     <div class="fstory">
-      <div class="eyebrow">LiveHero Ambassador</div>
+      <div class="eyebrow">Meet our Ambassador</div>
       <h2>He was told to wait.<br>He chose to lead instead.</h2>
       <blockquote>&ldquo;Fight. Recover. Because you can. And live life to the fullest.&rdquo;<cite>&mdash; Louis Gibson</cite></blockquote>
       <p>Louis Gibson came home from active duty with a severe traumatic brain injury and a spinal-cord injury, then spent years navigating poor care and false narratives before finding the providers who helped him rebuild. That road became his mission: no one who served should face recovery, a legal fight, or a hard night by themselves.</p>
-      <p>In 2018 he founded Legal Protection Agent to connect people failed by broken systems with qualified legal help. As LiveHero’s U.S. Ambassador he carries the same promise to veterans and their families across the country, his way: helping through teaching, not telling.</p>
+      <p>As LiveHero’s U.S. Ambassador, Louis carries the LiveHero mission to veterans, families, and supporters across the country, his way: helping through teaching, not telling.</p>
       <div class="fvals">
         <div><b>Honor</b><span>We tell the truth and keep our word to the people who kept theirs.</span></div>
         <div><b>Service</b><span>Veterans first, paperwork second. Someone always answers the call.</span></div>
         <div><b>Recovery</b><span>Healing is possible. We fund the care that proves it.</span></div>
       </div>
-      <a class="btn btn-red" href="#donate">Stand with Ambassador Gibson</a>
+      <a class="btn btn-red" href="#donate">Stand with LiveHero</a>
     </div>
   </div>
 </section>
@@ -838,7 +935,7 @@
           <div class="cart-give"><span>Goes to veterans</span><b id="cartGive">$0</b></div>
           <div class="cart-bar"><i id="cartBar"></i></div>
           <a class="btn btn-red" id="shopGo" href="https://louisgibson.us/shop" target="_blank" rel="noopener">Checkout at louisgibson.us</a>
-          <p class="fine">Merch is sold through Louis Gibson's official shop. Proceeds shown are the per-item amount pledged to LiveHero.</p>
+          <p class="fine">Merch is sold through our Ambassador’s official shop. Proceeds shown are the per-item amount pledged to LiveHero.</p>
         </aside>
       </div>
     </div>
@@ -910,7 +1007,7 @@
       <div class="card"><div class="ico">🏢</div><h3>Employer matching</h3><p>Thousands of companies match employee gifts, often dollar for dollar. Check if yours does and double your impact.</p><a href="#">Find your employer →</a></div>
       <div class="card"><div class="ico">📈</div><h3>Stock, DAF &amp; IRA gifts</h3><p>Give appreciated securities, recommend a grant from your donor-advised fund, or make a qualified charitable distribution.</p><a href="#">Learn about asset gifts →</a></div>
       <div class="card"><div class="ico">🕊️</div><h3>Legacy giving</h3><p>Include LiveHero in your will or trust and ensure veterans are cared for long into the future.</p><a href="#">Plan a legacy gift →</a></div>
-      <div class="card"><div class="ico">🧢</div><h3>Shop to support</h3><p>Louis’s official shop carries LiveHero gear and his book. Every item sends a fixed amount to veterans.</p><a href="#walk" data-jump="shop">Gear up →</a></div>
+      <div class="card"><div class="ico">🧢</div><h3>Shop to support</h3><p>LiveHero gear and our Ambassador’s book, Wheelchair Wisdom. Every item sends a fixed amount to veterans.</p><a href="#walk" data-jump="shop">Gear up →</a></div>
       <div class="card"><div class="ico">🎉</div><h3>Fundraise for heroes</h3><p>Turn a birthday, race, or milestone into support for veterans with your own peer-to-peer fundraising page.</p><a href="#">Start a fundraiser →</a></div>
       <div class="card"><div class="ico">🤝</div><h3>Corporate partnership</h3><p>Sponsor a program, host a volunteer day, or build a cause-marketing campaign with LiveHero.</p><a href="#">Partner with us →</a></div>
       <div class="card"><div class="ico">⏱️</div><h3>Volunteer your time</h3><p>Mentor a transitioning veteran, support an event, or lend your professional skills.</p><a href="#">Volunteer →</a></div>
@@ -935,22 +1032,6 @@
   </div>
 </section>
 
-
-<!-- WHO WE ARE -->
-<section class="block" id="who" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head"><div class="eyebrow">Who we are</div><h2>To restore and save<br>the life and livelihoods.</h2>
-      <p>Live Hero, Inc. is a national veterans&rsquo; service organization. Our mission is to alleviate suffering and to enhance the life and living of those who have served in defense of national security, and to support the veterans injured while defending our freedoms.</p></div>
-    <div class="purpose">
-      <div class="pcard"><i>01</i><h3>Comradeship</h3><p>Foster comradeship among veterans, so no one who served walks the road home alone.</p></div>
-      <div class="pcard"><i>02</i><h3>Honor the fallen</h3><p>Honor the memory of deceased veterans and comfort the families they left behind.</p></div>
-      <div class="pcard"><i>03</i><h3>Patriotism</h3><p>Encourage patriotism and the spirit of service in our communities and the next generation.</p></div>
-      <div class="pcard"><i>04</i><h3>Aid in need</h3><p>Aid hospitalized, disabled, and needy veterans and their dependents with care, shelter, food, health, education, and financial help.</p></div>
-    </div>
-    <div class="proverb">&ldquo;Whoever saves a single life is considered to have saved the whole world.&rdquo;<span>Jewish proverb &middot; the line LiveHero was founded on</span></div>
-    <p class="fine" style="color:var(--muted);max-width:760px">Live Hero, Inc. also works for the social welfare of veterans and their dependents, widows, and orphans; provides entertainment and care for hospitalized veterans; sponsors memorial, charitable, educational, and patriotic programs; and offers social and recreational activities for members.</p>
-  </div>
-</section>
 
 <!-- FAQ -->
 <section class="block" style="padding-top:0">
@@ -1109,10 +1190,10 @@
 
   // 02 shop — gear that gives back
   const gear=[
-    {n:'No Hero Stands Alone tee',d:'Heavyweight cotton, navy with scarlet print.',price:32,give:12,bg:'linear-gradient(160deg,#0a1a2f,#13294a)',art:'No hero<br>stands alone'},
-    {n:'Fight. Recover. cap',d:'Louis’s motto. Structured, embroidered, one size.',price:28,give:10,bg:'linear-gradient(160deg,#b3121c,#8f0d15)',art:'Fight.<br>Recover.<small>Because you can</small>'},
+    {n:'No Hero Stands Alone tee',d:'Heavyweight cotton, navy with scarlet print.',price:32,give:12,bg:'linear-gradient(160deg,var(--navy),var(--navy-2))',art:'No hero<br>stands alone'},
+    {n:'Fight. Recover. cap',d:'Our Ambassador’s motto. Structured, embroidered, one size.',price:28,give:10,bg:'linear-gradient(160deg,#b3121c,#8f0d15)',art:'Fight.<br>Recover.<small>Because you can</small>'},
     {n:'LiveHero hoodie',d:'Fleece-lined, shield mark on the chest, flag on the sleeve.',price:58,give:20,bg:'linear-gradient(160deg,#d4a017,#b8860b)',art:'Live<br>Hero<small>est. for those who served</small>'},
-    {n:'Wheelchair Wisdom (signed)',d:'Louis’s book on awakening your spirit through adversity.',price:24,give:24,bg:'linear-gradient(160deg,#1d3f78,#0a1a2f)',art:'Wheelchair<br>Wisdom<small>signed copy</small>'}
+    {n:'Wheelchair Wisdom (signed)',d:'By our Ambassador, Louis Gibson: awakening your spirit through adversity.',price:24,give:24,bg:'linear-gradient(160deg,var(--navy-2),var(--navy))',art:'Wheelchair<br>Wisdom<small>signed copy</small>'}
   ];
   const qty=gear.map(()=>0);
   const P=document.getElementById('products');
@@ -1191,6 +1272,7 @@
 </script>
 
 <div class="themer" id="themer"><b>Color scheme</b>
+  <button data-t="light" style="--a:#ffffff;--b:#163b2c">White, Green &amp; Red</button>
   <button data-t="default" style="--a:#0a1a2f;--b:#b3121c">Navy &amp; Scarlet</button>
   <button data-t="green" style="--a:#ffffff;--b:#163b2c">White &amp; Hunter Green</button>
   <button data-t="green-scarlet" style="--a:#163b2c;--b:#b3121c">Hunter Green &amp; Scarlet</button>
@@ -1199,10 +1281,10 @@
 <script>
 (function(){
   const q=new URLSearchParams(location.search).get('theme');
-  let t=q||'default'; try{ if(!q) t=localStorage.getItem('lh-theme')||'default'; }catch(e){}
+  let t=q||'light'; try{ if(!q) t=localStorage.getItem('lh-theme-v2')||'light'; }catch(e){}
   function apply(n){ t=n; if(n==='default') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme',n);
-    document.querySelectorAll('#themer button').forEach(b=>b.classList.toggle('on',b.dataset.t===n)); try{localStorage.setItem('lh-theme',n);}catch(e){}
-    const u=new URL(location.href); if(n==='default') u.searchParams.delete('theme'); else u.searchParams.set('theme',n); history.replaceState(null,'',u); }
+    document.querySelectorAll('#themer button').forEach(b=>b.classList.toggle('on',b.dataset.t===n)); try{localStorage.setItem('lh-theme-v2',n);}catch(e){}
+    const u=new URL(location.href); if(n==='light') u.searchParams.delete('theme'); else u.searchParams.set('theme',n); history.replaceState(null,'',u); }
   document.querySelectorAll('#themer button').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.t)));
   apply(t);
 })();
